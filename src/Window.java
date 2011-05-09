@@ -31,7 +31,7 @@ public class Window extends JFrame {
      * Ritar ut all grafik
      * @param objects De objekt som skall synas på skärmen
      */
-    public void draw(Set<Entity> backgroundObjects, Set<Entity> foregroundObjects, long points, String text) {
+    public void draw() {
         b = buffer.createGraphics();
 
         // Gör så att allt blir härligt smooth
@@ -56,7 +56,7 @@ public class Window extends JFrame {
      * @param o
      */
     public void drawObject(Entity o, Graphics2D b) {
-        drawImage(o.getImage(), o.getIntX(), o.getIntY(), o.getAngle(), o.getRotationCenterX(), o.getRotationCenterY(), b);
+        drawImage(o.getImage(), o.getX(), o.getY(), o.getAngle(), o.getRotationCenterX(), o.getRotationCenterX(), b);
     }
 
     /**
@@ -77,7 +77,19 @@ public class Window extends JFrame {
         tfm.rotate(0, 0, 0);
     }
 
-    /**
+    private int getWINDOW_HEIGHT() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	private int getWINDOW_WIDTH() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	/**
      * Ritar en bild, helt utan rotation.
      * @param image
      * @param x
@@ -95,7 +107,7 @@ public class Window extends JFrame {
         buffer = new BufferedImage(WINDOW_WIDTH, WINDOW_HEIGHT, BufferedImage.TYPE_INT_RGB);
         add(panel);
         setTitle("GTA - LiTHe Farligt");
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // Kul att det inte är default
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // Kul att det inte är så per default
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(null);
         setVisible(true);
