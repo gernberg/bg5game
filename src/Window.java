@@ -44,14 +44,9 @@ public class Window extends JFrame {
         b.setColor(backgroundColor);
         b.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-        for (Entity foregroundObject : foregroundObjects) {
-            drawObject(foregroundObject, b);
-        }
-        for (Entity backgroundObject : backgroundObjects) {
-            drawObject(backgroundObject, b);
-        }
-        drawScore(points);
-        drawTextMessage(text);
+        // TODO: Här borde det ritas ut objekt
+        
+        // Detta ritar ut allting på riktigt :-)
         drawScreen();
     }
 
@@ -62,14 +57,6 @@ public class Window extends JFrame {
      */
     public void drawObject(Entity o, Graphics2D b) {
         drawImage(o.getImage(), o.getIntX(), o.getIntY(), o.getAngle(), o.getRotationCenterX(), o.getRotationCenterY(), b);
-    }
-
-    private int getRelativeX(int x) {
-        return x - offsetX + getWINDOW_WIDTH() / 2;
-    }
-
-    private int getRelativeY(int y) {
-        return y - offsetY + getWINDOW_HEIGHT() / 2;
     }
 
     /**
@@ -120,51 +107,6 @@ public class Window extends JFrame {
         panel.addKeyListener(UserController);
     }
 
-    public static int getWORLD_HEIGHT() {
-        return WORLD_HEIGHT;
-    }
-
-    public static int getWORLD_WIDTH() {
-        return WORLD_WIDTH;
-    }
-
-    public static int getWINDOW_HEIGHT() {
-        return WINDOW_HEIGHT;
-    }
-
-    public static int getWINDOW_WIDTH() {
-        return WINDOW_WIDTH;
-    }
-
-    /**
-     * Ritar ut ett meddelande på skärmen strax ovanför användaren.
-     * @param textMessage
-     */
-    public void drawTextMessage(String textMessage) {
-        if (textMessage == null) {
-            return;
-        }
-        AffineTransform tfm = new AffineTransform();
-        tfm.setToScale(3, 3);
-        b.setTransform(tfm);
-        b.setColor(Color.BLACK);
-        b.drawChars(textMessage.toCharArray(), 0, textMessage.length(), 100 - textMessage.length() * 3, 100);
-        tfm.setToScale(2.985, 2.985);
-        b.setTransform(tfm);
-        b.setColor(Color.WHITE);
-        b.drawChars(textMessage.toCharArray(), 0, textMessage.length(), 100 - textMessage.length() * 3, 100);
-        b.dispose();
-    }
-
-    private void drawScore(long points) {
-        b.setTransform(new AffineTransform());
-        b.setColor(Color.BLACK);
-        b.fillRect(0, 0, getWINDOW_WIDTH(), 50);
-        b.setColor(Color.WHITE);
-        b.drawLine(0, 50, getWINDOW_WIDTH(), 50);
-        b.setColor(Color.GREEN);
-        b.drawChars(("Poäng: " + String.valueOf(points)).toCharArray(), 0, ("Poäng: " + String.valueOf(points)).length(), getWINDOW_WIDTH() / 2 - 20, 45);
-    }
     /**
      * Ritar ut allting på skärmen
      */
