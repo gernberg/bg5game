@@ -19,8 +19,6 @@ public class Window extends JFrame {
 	 */
 	private static int WINDOW_WIDTH = 600;
     private static int WINDOW_HEIGHT = 600;
-    private static int WORLD_WIDTH = 1280;
-    private static int WORLD_HEIGHT = 1280;
     public int offsetY, offsetX;
     double i = 0;
     Color backgroundColor = Color.GRAY;
@@ -107,7 +105,7 @@ public class Window extends JFrame {
         panel = new Panel();
         buffer = new BufferedImage(WINDOW_WIDTH, WINDOW_HEIGHT, BufferedImage.TYPE_INT_RGB);
         add(panel);
-        setTitle("GTA - LiTHe Farligt");
+        setTitle("2 girls 1 caps");
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Kul att det inte är så per default
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(null);
@@ -116,8 +114,8 @@ public class Window extends JFrame {
         createBufferStrategy(2);
     }
 
-    public void addUserInput(UserController UserController) {
-        panel.addKeyListener(UserController);
+    public void addUserController(UserController userController) {
+        panel.addKeyListener(userController);
     }
 
     /**
