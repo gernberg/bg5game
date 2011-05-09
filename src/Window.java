@@ -8,8 +8,9 @@ import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import java.util.Set;
 /**
- * Fönstret där allting visas
- * @author gustav
+ * Fönstret där allting visas, 
+ * Stora delar är stulet från slutprojekt i TDDC77, 
+ * men eftersom att det inte innehåller någon fysik hoppas vi att det är okej.  
  */
 public class Window extends JFrame {
 
