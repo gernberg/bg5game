@@ -14,7 +14,7 @@ public class Main {
 		// kontroller / uppritning och dylikt.
 		Window w = new Window();
 		UserController uc = new UserController();
-		w.addUserController(uc);
+		w.addUserInput(uc);
 		while(true){
 			try {
 				// Vi vill gärna att loopen inte går helt okontrollerat utan med en liten
@@ -23,7 +23,7 @@ public class Main {
 			} catch (InterruptedException e) {
 				// Det här bryr vi oss inte om
 			}
-			w.draw(null, null);
+			w.draw();
 		}
 	}
 	

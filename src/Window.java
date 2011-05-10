@@ -58,13 +58,6 @@ public class Window extends JFrame {
     }
 
 
-    /**
-     * Ritar ut ett objekt, anropar drawImage
-     * @param o
-     */
-    public void drawObject(Entity o, Graphics2D b) {
-        drawImage(o.getImage(), o.getIntX(), o.getIntY(), o.getAngle(), o.getRotationCenterX(), o.getRotationCenterY(), b);
-    }
 
     private int getRelativeX(int x) {
         return x - offsetX + getWINDOW_WIDTH() / 2;
