@@ -6,7 +6,7 @@ public class Platform extends Entity {
 
 	public Platform(int x, int y) {
 		super(x, y);
-		super.setShape(new Rectangle.Double(x, y, 10, 10));
+		super.setShape(new Rectangle.Double(x, y, 100, 10));
 		super.setColor(Color.CYAN);
 	}
 
