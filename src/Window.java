@@ -21,7 +21,7 @@ public class Window extends JFrame {
     private static int WINDOW_HEIGHT = 600;
     public int offsetY, offsetX;
     double i = 0;
-    Color backgroundColor = Color.GRAY;
+    Color backgroundColor = Color.BLACK;
     BufferedImage buffer;
     Graphics2D b, bg2;
     Panel panel;
@@ -109,6 +109,8 @@ public class Window extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Kul att det inte är så per default
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(null);
+        
+        
         setVisible(true);
         setResizable(false);
         createBufferStrategy(2);
