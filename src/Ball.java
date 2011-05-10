@@ -1,7 +1,12 @@
+public class Ball extends Entity {
 
-public class Ball {
-	int a= 0;
-	
+	public Ball(int x, int y) {
+		super(x, y);
+	}
 
-
+	@Override
+	public ImageObject getImage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

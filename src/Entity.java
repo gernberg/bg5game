@@ -1,10 +1,15 @@
 
-public class Entity {
-
-	public ImageObject getImage() {
-		// TODO Auto-generated method stub
-		return null;
+public abstract class Entity {
+	
+	private int xkord, ykord;
+	private double speed;
+	
+	public Entity(int x, int y){
+		xkord = x;
+		ykord = y;
 	}
+
+	public abstract ImageObject getImage();
 
 	public double getAngle() {
 		// TODO Auto-generated method stub
@@ -18,12 +23,15 @@ public class Entity {
 
 	public int getX() {
 		// TODO Auto-generated method stub
-		return 0;
+		return xkord;
 	}
 
 	public int getY() {
 		// TODO Auto-generated method stub
-		return 0;
+		return ykord;
+	}
+	public double getSpeed() {
+		return speed;
 	}
 	
 }
