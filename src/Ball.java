@@ -1,7 +1,15 @@
+import java.awt.geom.Ellipse2D;
+
 public class Ball extends Entity {
 
 	public Ball(int x, int y) {
 		super(x, y);
-		
+		super.setForm(new Ellipse2D.Double(x, y, 10, 10));
+	}
+
+	@Override
+	public ImageObject getImage() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

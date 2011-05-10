@@ -1,13 +1,12 @@
 import java.awt.Shape;
 
-
 public abstract class Entity {
-	
+
 	private int xkord, ykord;
 	private double speed;
 	private Shape form;
-	
-	public Entity(int x, int y){
+
+	public Entity(int x, int y) {
 		xkord = x;
 		ykord = y;
 	}
@@ -33,11 +32,17 @@ public abstract class Entity {
 		// TODO Auto-generated method stub
 		return ykord;
 	}
+
 	public double getSpeed() {
 		return speed;
 	}
-	public Shape getForm(){
+
+	public Shape getForm() {
 		return form;
 	}
-	
+
+	public void setForm(Shape form) {
+		this.form = form;
+	}
+
 }
