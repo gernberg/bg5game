@@ -59,8 +59,9 @@ public class Window extends JFrame {
      * @param o
      */
     public void drawObject(Entity o, Graphics2D b) {
+    	System.out.println(o.getColor());
         b.setColor(o.getColor());
-        drawShape(o.getShape(), b);
+        b.fill(o.getShape());
     }
 
     /**

@@ -46,7 +46,6 @@ public abstract class Entity {
 	}
 
 	public Color getColor() {
-		// TODO Auto-generated method stub
 		return color;
 	}
 	public void setColor(Color color){
