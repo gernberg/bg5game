@@ -4,14 +4,12 @@ public abstract class Entity {
 
 	private int xkord, ykord;
 	private double speed;
-	private Shape form;
+	private Shape shape;
 
 	public Entity(int x, int y) {
 		xkord = x;
 		ykord = y;
 	}
-
-	public abstract ImageObject getImage();
 
 	public double getAngle() {
 		// TODO Auto-generated method stub
@@ -37,12 +35,13 @@ public abstract class Entity {
 		return speed;
 	}
 
-	public Shape getForm() {
-		return form;
+	public Shape getShape() {
+		return shape;
 	}
 
-	public void setForm(Shape form) {
-		this.form = form;
+	public void setShape(Shape shape) {
+		this.shape = shape;
 	}
+
 
 }

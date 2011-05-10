@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Panel;
 import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
@@ -44,7 +45,7 @@ public class Window extends JFrame {
         b.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
         // TODO: Här borde det ritas ut objekt
-        
+        drawObject(new Platform(100,100), b);
         // Detta ritar ut allting på riktigt :-)
         drawScreen();
     }
@@ -55,9 +56,17 @@ public class Window extends JFrame {
      * @param o
      */
     public void drawObject(Entity o, Graphics2D b) {
-        drawImage(o.getImage(), o.getX(), o.getY(), o.getAngle(), o.getRotationCenterX(), o.getRotationCenterX(), b);
+        drawShape(o.getShape(), b);
     }
 
+    /**
+     * Ritar en form - Känns lite överflödig
+     * @param shape Formen som skall ritas ut
+     * @param b Graphics2D, buffern som skapas
+     */
+    public void drawShape(Shape shape, Graphics2D b) {
+        b.fill(shape);
+    }
     /**
      * Ritar en bild, med rotation
      * @param image Bilden som skall ritas ut
