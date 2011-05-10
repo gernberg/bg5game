@@ -1,8 +1,11 @@
+import java.awt.Shape;
+
 
 public abstract class Entity {
 	
 	private int xkord, ykord;
 	private double speed;
+	private Shape form;
 	
 	public Entity(int x, int y){
 		xkord = x;
