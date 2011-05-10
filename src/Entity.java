@@ -16,17 +16,20 @@ public class Entity {
 
 	public int getRotationCenterX() {
 		// TODO Auto-generated method stub
-		return x;
+		return 0;
 	}
 
 	public int getX() {
 		// TODO Auto-generated method stub
-		return x;
+		return xkord;
 	}
 
 	public int getY() {
 		// TODO Auto-generated method stub
-		return y;
+		return ykord;
+	}
+	public double getSpeed() {
+		return speed;
 	}
 	
 }
