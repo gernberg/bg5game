@@ -24,7 +24,7 @@ public class Window extends JFrame {
     private static int WORLD_HEIGHT = 1280;
     public int offsetY, offsetX;
     double i = 0;
-    Color backgroundColor = Color.GRAY;
+    Color backgroundColor = Color.BLACK;
     BufferedImage buffer;
     Graphics2D b, bg2;
     Panel panel;
