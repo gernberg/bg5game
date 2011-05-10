@@ -7,9 +7,14 @@ public class UserController implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		// Lite kod som ska konflikta.
+		if(arg0.getKeyChar() == 'g'){
+			System.out.println("G är bästa bokstaven!");
+		}else{
+			System.out.println("Du tryckte ner: " + arg0.getKeyChar());
+		}
 	}
-
+	
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
