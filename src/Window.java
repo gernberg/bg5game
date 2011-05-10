@@ -71,23 +71,6 @@ public class Window extends JFrame {
     public void drawShape(Shape shape, Graphics2D b) {
         b.fill(shape);
     }
-    /**
-     * Ritar en bild, med rotation
-     * @param image Bilden som skall ritas ut
-     * @param x x-position
-     * @param y y-position
-     * @param rotation Rotering (mätt i radianer)
-     * @param rotationCenterX x-position för rotation, relativt bildens x position
-     * @param rotationCenterY y-position för rotation, relativt bildens y position
-     * @param b Graphics2D, buffern som skapas
-     */
-    public void drawImage(ImageObject image, int x, int y, double rotation, int rotationCenterX, int rotationCenterY, Graphics2D b) {
-        AffineTransform tfm = new AffineTransform();
-        tfm.rotate(rotation, x + rotationCenterX - offsetX + getWINDOW_WIDTH() / 2, y + rotationCenterY - offsetY + getWINDOW_HEIGHT() / 2);
-        b.setTransform(tfm);
-        b.drawImage(image.getImage(), x - offsetX + getWINDOW_WIDTH() / 2, y - offsetY + getWINDOW_HEIGHT() / 2, this);
-        tfm.rotate(0, 0, 0);
-    }
 
     private int getWINDOW_HEIGHT() {
 		return this.WINDOW_HEIGHT;
@@ -99,15 +82,6 @@ public class Window extends JFrame {
 	}
 
 
-	/**
-     * Ritar en bild, helt utan rotation.
-     * @param image
-     * @param x
-     * @param y
-     */
-    public void drawImage(ImageObject image, Graphics2D b, int x, int y) {
-        drawImage(image, x, y, 0, 0, 0, b);
-    }
 
     /**
      * Skapar alla viktiga saker
