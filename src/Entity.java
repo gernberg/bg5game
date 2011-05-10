@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Shape;
 
 public abstract class Entity {
@@ -5,7 +6,8 @@ public abstract class Entity {
 	private int xkord, ykord;
 	private double speed;
 	private Shape shape;
-
+	private Color color;
+	
 	public Entity(int x, int y) {
 		xkord = x;
 		ykord = y;
@@ -43,5 +45,12 @@ public abstract class Entity {
 		this.shape = shape;
 	}
 
+	public Color getColor() {
+		// TODO Auto-generated method stub
+		return color;
+	}
+	public void setColor(Color color){
+		this.color = color;
+	}
 
 }
