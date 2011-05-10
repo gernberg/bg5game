@@ -109,6 +109,8 @@ public class Window extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Kul att det inte är så per default
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(null);
+        
+        
         setVisible(true);
         setResizable(false);
         createBufferStrategy(2);
