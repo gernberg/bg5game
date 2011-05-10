@@ -41,7 +41,7 @@ public abstract class Entity {
 		return form;
 	}
 
-	public void setForm(Shape form) {
+	void setForm(Shape form) {
 		this.form = form;
 	}
 
