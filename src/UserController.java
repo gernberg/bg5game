@@ -1,8 +1,10 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
-public class UserController implements KeyListener{
+public class UserController implements KeyListener, MouseListener{
 
 	@Override
 	public void keyPressed(KeyEvent ke) {
@@ -27,6 +29,35 @@ public class UserController implements KeyListener{
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
+		// Den här kommer vi inte använda med all sannolikhet, den är rätt dum		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
