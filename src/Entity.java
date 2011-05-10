@@ -1,5 +1,8 @@
 
 public class Entity {
+	
+	private int xkord, ykord;
+	private double speed;
 
 	public ImageObject getImage() {
 		// TODO Auto-generated method stub
@@ -13,17 +16,17 @@ public class Entity {
 
 	public int getRotationCenterX() {
 		// TODO Auto-generated method stub
-		return 0;
+		return x;
 	}
 
 	public int getX() {
 		// TODO Auto-generated method stub
-		return 0;
+		return x;
 	}
 
 	public int getY() {
 		// TODO Auto-generated method stub
-		return 0;
+		return y;
 	}
 	
 }
