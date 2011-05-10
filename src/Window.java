@@ -1,3 +1,5 @@
+
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Panel;
@@ -7,18 +9,19 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import java.util.Set;
+//import lithefarligt.entities.UserController;
+//import lithefarligt.entities.Entity;
+
 /**
- * Fönstret där allting visas, 
- * Stora delar är stulet från slutprojekt i TDDC77, 
- * men eftersom att det inte innehåller någon fysik hoppas vi att det är okej.  
+ * Fönstret där allting visas
+ * @author gustav
  */
 public class Window extends JFrame {
 
-    /**
-	 * 
-	 */
-	private static int WINDOW_WIDTH = 600;
+    private static int WINDOW_WIDTH = 600;
     private static int WINDOW_HEIGHT = 600;
+    private static int WORLD_WIDTH = 1280;
+    private static int WORLD_HEIGHT = 1280;
     public int offsetY, offsetX;
     double i = 0;
     Color backgroundColor = Color.GRAY;
@@ -34,18 +37,23 @@ public class Window extends JFrame {
         b = buffer.createGraphics();
 
         // Gör så att allt blir härligt smooth
-        b.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        b.setRenderingHint(RenderingHints.KEY_RENDERING,
-                RenderingHints.VALUE_RENDER_QUALITY);
+//        b.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+//                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+//        b.setRenderingHint(RenderingHints.KEY_RENDERING,
+//                RenderingHints.VALUE_RENDER_QUALITY);
 
         // Fyll bakgrunden i hela spelet med bakgrundsfärgen
         b.setColor(backgroundColor);
         b.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-        // TODO: Här borde det ritas ut objekt
-        
-        // Detta ritar ut allting på riktigt :-)
+//        for (Entity foregroundObject : foregroundObjects) {
+//            drawObject(foregroundObject, b);
+//        }
+//        for (Entity backgroundObject : backgroundObjects) {
+//            drawObject(backgroundObject, b);
+//        }
+//        drawScore(points);
+//        drawTextMessage(text);
         drawScreen();
     }
 
@@ -55,7 +63,15 @@ public class Window extends JFrame {
      * @param o
      */
     public void drawObject(Entity o, Graphics2D b) {
-        drawImage(o.getImage(), o.getX(), o.getY(), o.getAngle(), o.getRotationCenterX(), o.getRotationCenterX(), b);
+        drawImage(o.getImage(), o.getIntX(), o.getIntY(), o.getAngle(), o.getRotationCenterX(), o.getRotationCenterY(), b);
+    }
+
+    private int getRelativeX(int x) {
+        return x - offsetX + getWINDOW_WIDTH() / 2;
+    }
+
+    private int getRelativeY(int y) {
+        return y - offsetY + getWINDOW_HEIGHT() / 2;
     }
 
     /**
@@ -76,19 +92,7 @@ public class Window extends JFrame {
         tfm.rotate(0, 0, 0);
     }
 
-    private int getWINDOW_HEIGHT() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	private int getWINDOW_WIDTH() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	/**
+    /**
      * Ritar en bild, helt utan rotation.
      * @param image
      * @param x
@@ -105,21 +109,64 @@ public class Window extends JFrame {
         panel = new Panel();
         buffer = new BufferedImage(WINDOW_WIDTH, WINDOW_HEIGHT, BufferedImage.TYPE_INT_RGB);
         add(panel);
-        setTitle("BG5 - The Game");
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // Kul att det inte är så per default
+        setTitle("GTA - LiTHe Farligt");
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // Kul att det inte är default
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(null);
-        
-        
         setVisible(true);
         setResizable(false);
         createBufferStrategy(2);
     }
 
-    public void addUserController(UserController userController) {
-        panel.addKeyListener(userController);
+    public void addUserInput(UserController UserController) {
+        panel.addKeyListener(UserController);
     }
 
+    public static int getWORLD_HEIGHT() {
+        return WORLD_HEIGHT;
+    }
+
+    public static int getWORLD_WIDTH() {
+        return WORLD_WIDTH;
+    }
+
+    public static int getWINDOW_HEIGHT() {
+        return WINDOW_HEIGHT;
+    }
+
+    public static int getWINDOW_WIDTH() {
+        return WINDOW_WIDTH;
+    }
+
+    /**
+     * Ritar ut ett meddelande på skärmen strax ovanför användaren.
+     * @param textMessage
+     */
+    public void drawTextMessage(String textMessage) {
+        if (textMessage == null) {
+            return;
+        }
+        AffineTransform tfm = new AffineTransform();
+        tfm.setToScale(3, 3);
+        b.setTransform(tfm);
+        b.setColor(Color.BLACK);
+        b.drawChars(textMessage.toCharArray(), 0, textMessage.length(), 100 - textMessage.length() * 3, 100);
+        tfm.setToScale(2.985, 2.985);
+        b.setTransform(tfm);
+        b.setColor(Color.WHITE);
+        b.drawChars(textMessage.toCharArray(), 0, textMessage.length(), 100 - textMessage.length() * 3, 100);
+        b.dispose();
+    }
+
+    private void drawScore(long points) {
+        b.setTransform(new AffineTransform());
+        b.setColor(Color.BLACK);
+        b.fillRect(0, 0, getWINDOW_WIDTH(), 50);
+        b.setColor(Color.WHITE);
+        b.drawLine(0, 50, getWINDOW_WIDTH(), 50);
+        b.setColor(Color.GREEN);
+        b.drawChars(("Poäng: " + String.valueOf(points)).toCharArray(), 0, ("Poäng: " + String.valueOf(points)).length(), getWINDOW_WIDTH() / 2 - 20, 45);
+    }
     /**
      * Ritar ut allting på skärmen
      */

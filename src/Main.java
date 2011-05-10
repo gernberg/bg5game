@@ -23,7 +23,7 @@ public class Main {
 			} catch (InterruptedException e) {
 				// Det här bryr vi oss inte om
 			}
-			w.draw();
+			w.draw(null, null);
 		}
 	}
 	
