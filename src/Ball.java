@@ -1,4 +1,6 @@
 
 public class Ball {
-	//Bloooooooooood!
+	int a= 0;
+	
+
 }
