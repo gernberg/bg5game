@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Panel;
 import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.Toolkit;
