@@ -86,14 +86,12 @@ public class Window extends JFrame {
     }
 
     private int getWINDOW_HEIGHT() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.WINDOW_HEIGHT;
 	}
 
 
 	private int getWINDOW_WIDTH() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.WINDOW_WIDTH;
 	}
 
 
