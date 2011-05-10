@@ -12,8 +12,6 @@ public abstract class Entity {
 		ykord = y;
 	}
 
-	public abstract ImageObject getImage();
-
 	public double getAngle() {
 		// TODO Auto-generated method stub
 		return 0;
@@ -35,6 +33,9 @@ public abstract class Entity {
 	}
 	public double getSpeed() {
 		return speed;
+	}
+	public Shape getForm(){
+		return form;
 	}
 	
 }
