@@ -4,6 +4,10 @@ public abstract class Entity {
 	private int xkord, ykord;
 	private double speed;
 	
+	public Entity(int x, int y){
+		xkord = x;
+		ykord = y;
+	}
 
 	public ImageObject getImage() {
 		// TODO Auto-generated method stub
