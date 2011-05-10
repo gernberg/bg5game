@@ -4,12 +4,4 @@ public class Ball extends Entity {
 		super(x, y);
 		
 	}
-
-	@Override
-	public ImageObject getImage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 }
