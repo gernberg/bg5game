@@ -1,6 +1,6 @@
+public class Ball extends Entity {
 
-public class Ball {
-	int a= 0;
-	
-
+	public Ball(int x, int y) {
+		super(x, y);
+	}
 }

@@ -7,6 +7,8 @@ public class UserController implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
+		//test kod som funkar om den vill :-)
+		
 		
 		if(arg0.getKeyChar() == 'g'){
 			System.out.println("G är bästa bokstaven!");
