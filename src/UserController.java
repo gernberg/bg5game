@@ -8,11 +8,6 @@ public class UserController implements KeyListener{
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
-		if (true){
-			
-		}
-		
-		
 	}
 
 	@Override
