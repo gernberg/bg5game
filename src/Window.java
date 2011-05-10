@@ -7,15 +7,18 @@ import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
-import java.util.Set;
 /**
  * Fönstret där allting visas, 
  * Stora delar är stulet från slutprojekt i TDDC77, 
- * men eftersom att det inte innehåller någon fysik hoppas vi att det är okej.  
+ * men eftersom att det inte innehåller någon fysik hoppas vi på att det är okej.  
  */
 public class Window extends JFrame {
 
-    /**
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * 
 	 */
 	private final int WINDOW_WIDTH = 600;
@@ -45,6 +48,7 @@ public class Window extends JFrame {
         b.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
         // TODO: Här borde det ritas ut objekt
+        
         drawObject(new Platform(100,100), b);
         // Detta ritar ut allting på riktigt :-)
         drawScreen();
@@ -119,7 +123,7 @@ public class Window extends JFrame {
         
         
         setVisible(true);
-        setResizable(false);
+        setResizable(true);
         createBufferStrategy(2);
     }
 
