@@ -1,8 +1,9 @@
 
-public class Entity {
+public abstract class Entity {
 	
 	private int xkord, ykord;
 	private double speed;
+	
 
 	public ImageObject getImage() {
 		// TODO Auto-generated method stub
