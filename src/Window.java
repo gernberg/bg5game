@@ -47,8 +47,10 @@ public class Window extends JFrame {
         b.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
         // TODO: Här borde det ritas ut objekt
+
+        drawObject(new Platform(100,200), b);
+        drawObject(new Ball(100,100), b);
         
-        drawObject(new Platform(100,100), b);
         // Detta ritar ut allting på riktigt :-)
         drawScreen();
     }
