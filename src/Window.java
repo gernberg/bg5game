@@ -105,7 +105,7 @@ public class Window extends JFrame {
         panel = new Panel();
         buffer = new BufferedImage(WINDOW_WIDTH, WINDOW_HEIGHT, BufferedImage.TYPE_INT_RGB);
         add(panel);
-        setTitle("2 girls 1 caps");
+        setTitle("BG5 - The Game");
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Kul att det inte är så per default
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(null);
