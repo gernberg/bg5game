@@ -5,15 +5,16 @@ import java.awt.event.KeyListener;
 public class UserController implements KeyListener{
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		//test kod som funkar om den vill :-)
-		
-		
-		if(arg0.getKeyChar() == 'g'){
-			System.out.println("G är bästa bokstaven!");
-		}else{
-			System.out.println("Du tryckte ner: " + arg0.getKeyChar());
+	public void keyPressed(KeyEvent ke) {
+		switch(ke.getKeyCode()){
+		case KeyEvent.VK_UP:
+			break;
+		case KeyEvent.VK_DOWN:
+			break;
+		case KeyEvent.VK_LEFT:
+			break;
+		case KeyEvent.VK_RIGHT:
+			break;
 		}
 
 	}
