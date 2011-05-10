@@ -4,7 +4,7 @@ public class Ball extends Entity {
 
 	public Ball(int x, int y) {
 		super(x, y);
-		super.setForm(new Ellipse2D.Double(x, y, 10, 10));
+		super.setShape(new Ellipse2D.Double(x, y, 10, 10));
 	}
 
 	@Override
