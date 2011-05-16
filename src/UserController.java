@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
  * Den nödvändigaste klassen - nästan. Håller koll på vad användaren gör vid
  * datorn och om det skall påverka spelet.
  */
-public class UserController implements KeyListener, MouseListener {
+public class UserController implements KeyListener {
 	Platform platform;
 	/**
 	 * Denna kallas på när en knapp trycks ner i fönstret.
@@ -43,35 +43,6 @@ public class UserController implements KeyListener, MouseListener {
 		// Den här kommer vi inte använda med all sannolikhet, den är rätt dum
 	}
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
 
 	public void setPlatform(Platform platform) {
 		// TODO Auto-generated method stub

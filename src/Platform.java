@@ -47,7 +47,6 @@ public class Platform extends Entity {
 		return new Rectangle(xkord, ykord, 100, 10);
 	}
 	public void poll(){
-//		speedY+=1;
 		System.out.println(speedY);
 		super.poll();
 	}
