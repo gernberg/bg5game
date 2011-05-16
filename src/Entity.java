@@ -1,6 +1,9 @@
 import java.awt.Color;
 import java.awt.Shape;
-
+/**
+ * Denna klass är grundklassen för alla typer av objekt som syns på skärmen.
+ * För att skapa ett nytt objekt som visas på skärmen ärver man alltså denna klass.
+ */
 public abstract class Entity {
 
 	private int xkord, ykord;
@@ -14,11 +17,6 @@ public abstract class Entity {
 	}
 
 	public double getAngle() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int getRotationCenterX() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -48,6 +46,7 @@ public abstract class Entity {
 	public Color getColor() {
 		return color;
 	}
+	
 	public void setColor(Color color){
 		this.color = color;
 	}

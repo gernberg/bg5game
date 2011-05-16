@@ -1,8 +1,10 @@
 
 import javax.swing.JPanel;
 /**
-* JPanel för det grafiska,
-* @author gustav
+* Insansierer en "Panel" som extendar JPanel, 
+* lite dåligt val av namn på klass kanske.
+* 
+* Gör lite magi så att allting flyter lite finare.
 */
 public class Panel extends JPanel{
     public Panel(){

@@ -33,7 +33,7 @@ public class Window extends JFrame {
      * Ritar ut all grafik
      * @param objects De objekt som skall synas på skärmen
      */
-    public void draw() {
+    public void update() {
         b = buffer.createGraphics();
 
         // Gör så att allt blir härligt smooth
