@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D;
  * och försöker lyda så bra som möjligt
  */
 public class Platform extends Entity {
-	private double acceleratorX = 2;
+	private double acceleratorX = 10;
 	private double acceleratorY = 20;
 	private double movingX = 0;
 	private double movingY = 0;
