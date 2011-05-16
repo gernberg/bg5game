@@ -48,6 +48,9 @@ public class UserController implements KeyListener {
 			case KeyEvent.VK_RIGHT:
 				platform.moveRight(false);
 				break;
+			case KeyEvent.VK_S:
+				platform.isStroboPop=!platform.isStroboPop;
+				break;
 		}
 
 	}
