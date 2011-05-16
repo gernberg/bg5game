@@ -33,8 +33,22 @@ public class UserController implements KeyListener {
 	}
 
 	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+	public void keyReleased(KeyEvent ke) {
+		// Vi undersöker vilken KeyCode som släpptes och säger åt plattformen att sluta röra sig
+		switch (ke.getKeyCode()) {
+			case KeyEvent.VK_UP:
+				platform.moveUp(false);
+				break;
+			case KeyEvent.VK_DOWN:
+				platform.moveDown(false);
+				break;
+			case KeyEvent.VK_LEFT:
+				platform.moveLeft(false);
+				break;
+			case KeyEvent.VK_RIGHT:
+				platform.moveRight(false);
+				break;
+		}
 
 	}
 

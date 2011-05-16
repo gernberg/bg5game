@@ -51,8 +51,8 @@ public abstract class Entity {
 	 * Denna metod skall kallas på en gång per "spelvarv"
 	 */
 	public void poll(){
-		ykord += speedY/10;
-		xkord += speedX/10;
+		ykord += Math.round(speedY/50);
+		xkord += Math.round(speedX/50);
 	}
 
 }
