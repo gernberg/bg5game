@@ -5,10 +5,9 @@ import java.awt.Shape;
  * För att skapa ett nytt objekt som visas på skärmen ärver man alltså denna klass.
  */
 public abstract class Entity {
-
-	private int xkord, ykord;
-	private double speed;
-	private Shape shape;
+	protected int xkord, ykord;
+	protected double speedX = 0;
+	protected double speedY = 0;
 	private Color color;
 	
 	public Entity(int x, int y) {
@@ -31,17 +30,15 @@ public abstract class Entity {
 		return ykord;
 	}
 
-	public double getSpeed() {
-		return speed;
+	public double getSpeedX() {
+		return speedX;
+	}
+	public double getSpeedY() {
+		return speedY;
 	}
 
-	public Shape getShape() {
-		return shape;
-	}
+	public abstract Shape getShape();
 
-	public void setShape(Shape shape) {
-		this.shape = shape;
-	}
 
 	public Color getColor() {
 		return color;
@@ -49,6 +46,13 @@ public abstract class Entity {
 	
 	public void setColor(Color color){
 		this.color = color;
+	}
+	/**
+	 * Denna metod skall kallas på en gång per "spelvarv"
+	 */
+	public void poll(){
+		ykord += speedY/10;
+		xkord += speedX/10;
 	}
 
 }

@@ -28,12 +28,13 @@ public class Window extends JFrame {
     BufferedImage buffer;
     Graphics2D b, bg2;
     Panel panel;
-
+    Platform platform;
+    Ball ball;
     /**
      * Ritar ut all grafik
      * @param objects De objekt som skall synas på skärmen
      */
-    public void update() {
+    public void draw() {
         b = buffer.createGraphics();
 
         // Gör så att allt blir härligt smooth
@@ -46,10 +47,13 @@ public class Window extends JFrame {
         b.setColor(backgroundColor);
         b.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-        // TODO: Här borde det ritas ut objekt
-
-        drawObject(new Platform(100,200), b);
-        drawObject(new Ball(100,100), b);
+        // TODO: Här borde det ritas ut fler objekt
+        
+        platform.poll();
+        ball.poll();
+        
+        drawObject(platform, b);
+        drawObject(ball, b);
         
         // Detta ritar ut allting på riktigt :-)
         drawScreen();
@@ -97,6 +101,8 @@ public class Window extends JFrame {
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(null);
         
+        platform = new Platform(200,400);
+        ball = new Ball(250, 200);
         
         setVisible(true);
         setResizable(true);
@@ -105,6 +111,7 @@ public class Window extends JFrame {
 
     public void addUserController(UserController userController) {
         panel.addKeyListener(userController);
+        userController.setPlatform(platform);
     }
 
     /**

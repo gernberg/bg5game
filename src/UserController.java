@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
  * datorn och om det skall påverka spelet.
  */
 public class UserController implements KeyListener, MouseListener {
+	Platform platform;
 	/**
 	 * Denna kallas på när en knapp trycks ner i fönstret.
 	 */
@@ -16,12 +17,16 @@ public class UserController implements KeyListener, MouseListener {
 		// Vi undersöker vilken KeyCode som trycktes ner
 		switch (ke.getKeyCode()) {
 			case KeyEvent.VK_UP:
+				platform.moveUp();
 				break;
 			case KeyEvent.VK_DOWN:
+				platform.moveDown();
 				break;
 			case KeyEvent.VK_LEFT:
+				platform.moveLeft();
 				break;
 			case KeyEvent.VK_RIGHT:
+				platform.moveRight();
 				break;
 		}
 
@@ -66,6 +71,11 @@ public class UserController implements KeyListener, MouseListener {
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void setPlatform(Platform platform) {
+		// TODO Auto-generated method stub
+		this.platform = platform;
 	}
 
 }

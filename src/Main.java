@@ -2,6 +2,7 @@
  * Main startar upp allting, och instansierar det viktiga funktionerna.
  */
 public class Main {
+	private final int GAME_SPEED = 25;
 	public static void main(String[] args) {
 		Main m = new Main();
 		m.run();
@@ -25,11 +26,11 @@ public class Main {
 		while(true){
 			try {
 				// Vi vill gärna att loopen inte går helt okontrollerat utan med en liten vila.
-				Thread.sleep(25);
+				Thread.sleep(GAME_SPEED);
 			} catch (InterruptedException e) { /* Nej, det är inte så intressant */}
 			
 			// Den enda raden som gör något viktigt i denna loop
-			w.update();
+			w.draw();
 		}
 	}
 	
