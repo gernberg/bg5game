@@ -103,7 +103,6 @@ public class Coordinator {
 
 		for (Entity e : obstacles) {
 			if (platta.getShape().intersects((Rectangle2D) e.getShape())) {
-
 				e.setColor(Color.green);
 			}
 		}
@@ -117,12 +116,13 @@ public class Coordinator {
 	}
 
 	private void checkCollisionsWhithWall(Entity platta2) {
-		if (platta2.getShape().intersects((Rectangle2D) leftWall.getShape())){
+		if (platta2.getShape().intersects((Rectangle2D) leftWall.getShape())) {
 			platta2.speedX = -platta2.speedX;
-		}else if (platta2.getShape().intersects((Rectangle2D) rightWall.getShape())){
+		} else if (platta2.getShape().intersects(
+				(Rectangle2D) rightWall.getShape())) {
 			platta2.speedX = -platta2.speedX;
 		}
-		
+
 	}
 
 	private void collide(Ball b, Platform p) {
