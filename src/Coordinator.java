@@ -6,8 +6,15 @@ import java.util.LinkedList;
  */
 public class Coordinator {
 
-	private LinkedList<Entity> entities = new LinkedList<Entity>();
 
+	
+	private LinkedList<Entity> entities = new LinkedList<Entity>();
+	
+	/**
+	 * Array med fallande hinder.
+	 */
+	private Obstacle[] obstacles;
+	
 	Window w;
 	UserController uc;
 	Platform platta;
@@ -23,6 +30,18 @@ public class Coordinator {
 		addToList(boll);
 		uc.setPlatform(platta);
 		uc.setCoordinator(this);
+		
+		// Väggar utanför skärmen, längs kanterna, för studs...
+		Wall leftWall =  new Wall (-20 +10, -3000);
+		Wall rightWall = new Wall (Window.WINDOW_WIDTH -10, -3000);
+		addToList(leftWall);
+		addToList(rightWall);
+		
+		// skapar fallande objekt, lägger till dom
+		obstacles = createObstacles(6);
+		for (int i = 0; i < obstacles.length; i++) {
+			addToList(obstacles[i]);
+		}
 	}
 
 	public void addToList(Entity e) {
@@ -32,9 +51,26 @@ public class Coordinator {
 	public LinkedList<Entity> getEntitys() {
 		return entities;
 	}
-
-	public void update() {
-		checkCollisions();
+	
+	/**
+	 * Skapar massa fallande hinder med slumpade begynnelsepositioner.
+	 * @param num Antal samtidiga fallande hinder.
+	 * @return arrrrayyy
+	 */
+	private Obstacle[] createObstacles(int num) {
+		Obstacle[] array = new Obstacle[num];
+		for (int i = 0; i < array.length; i++) {
+			int x = (int) Math.round(Math.random() * Window.WINDOW_WIDTH);
+			int y = (int) Math.round(Math.random() * -1 * Window.WINDOW_HEIGHT);
+			array[i] = new Obstacle(x, y);
+			System.out.println(x);
+			System.out.println(y);
+		}
+		
+		return array;
+	}
+	
+	public void update(){
 		for (Iterator iterator = entities.iterator(); iterator.hasNext();) {
 			Entity entity = (Entity) iterator.next();
 

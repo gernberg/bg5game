@@ -24,8 +24,8 @@ public class Window extends JFrame {
 	/**
 	 * 
 	 */
-	private final int WINDOW_WIDTH = 600;
-    private final int WINDOW_HEIGHT = 600;
+	public static final int WINDOW_WIDTH = 600;
+    public static final int WINDOW_HEIGHT = 600;
     public int offsetY, offsetX;
     double i = 0;
     Color backgroundColor = Color.BLACK;
@@ -54,7 +54,7 @@ public class Window extends JFrame {
         b.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
        
-        //eniterator som hämtar sammlingen från cordinator och sedan ritar ut den ett och ett
+        //eniterator som hï¿½mtar sammlingen frï¿½n cordinator och sedan ritar ut den ett och ett
         for (Iterator iterator = entities.iterator(); iterator.hasNext();) {
 			Entity entity = (Entity) iterator.next();
 			
@@ -103,17 +103,6 @@ public class Window extends JFrame {
     public void drawShape(Shape shape, Graphics2D b) {
         b.fill(shape);
     }
-
-    private int getWINDOW_HEIGHT() {
-		return this.WINDOW_HEIGHT;
-	}
-
-
-	private int getWINDOW_WIDTH() {
-		return this.WINDOW_WIDTH;
-	}
-
-
 
     /**
      * Skapar alla viktiga saker
