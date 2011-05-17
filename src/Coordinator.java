@@ -56,13 +56,13 @@ public class Coordinator {
 	public void checkCollisions() {
 		int plattaCenterX, plattaCenterY, bollCenterX, bollCenterY;
 
-		// här letar vi reda på plattans och bollens mitt.
+		// hï¿½r letar vi reda pï¿½ plattans och bollens mitt.
 		plattaCenterX = platta.getX() + 25;
 		plattaCenterY = platta.getY() + 25;
 		bollCenterX = boll.getX() + 10;
 		bollCenterY = boll.getY() + 10;
 
-		// här kollar vi om de överlappar.
+		// hï¿½r kollar vi om de ï¿½verlappar.
 		if ((Math.pow(plattaCenterX - bollCenterX, 2) + Math.pow(plattaCenterY
 				- bollCenterY, 2)) < Math.pow(35, 2)) {
 			collide(boll, platta);
@@ -73,18 +73,30 @@ public class Coordinator {
 	private void collide(Ball b, Platform p) {
 		Ball bi = b;
 		Platform pi = p;
-		b.revertPosition();
-		int x = (b.getCenterX() - p.getCenterX());
-		int y = (b.getCenterY() - p.getCenterY());
+		double x = (b.getCenterX() - p.getCenterX());
+		double y = (b.getCenterY() - p.getCenterY());
 		double a = 0;
 		if(x!=0){
-			a = Math.atan(y/x) + 3*Math.PI/2;
+			a = Math.atan(y/x);
 		}
-		System.out.println("Alpha: " + a + " XY:" + x + "|" + y);
-		System.out.println((a/(2*Math.PI))*360);
-		
-		b.speedX = b.speedX + ((b.speedY - p.speedY)* Math.cos(a));
-		b.speedY = b.speedY + ((b.speedY - p.speedY)* Math.sin(a));
+		if(x<0){
+			a = Math.PI - a;
+		}
+		if(x>0){
+			a = -a;
+		}
+		b.revertPosition();
+		System.out.println("Alpha: " + a + "gr:" +(a/(2.0*Math.PI))*360 +  " XY:" + x + "|" + y);
+		double cosa = Math.cos(a);
+		double sina = Math.sin(a);
+
+		double k1 = b.getSpeedX()*cosa + b.getSpeedY()*sina;
+		double k2 = p.getSpeedX()*cosa + p.getSpeedY()*sina;
+
+		b.speedX += 2*(Math.abs(k1)+Math.abs(k2))*cosa;
+		b.speedY += -2*(Math.abs(k1)+Math.abs(k2))*sina;
+		p.speedX -= b.speedX/5;
+		p.speedY -= b.speedY/5;
 //		b.speedX = - Math.cos(a)*((Math.abs(b.speedX) + Math.abs(p.speedX)) * Math.sin(a)
 //					+ (Math.abs(b.speedY) + Math.abs(p.speedY)) * Math.cos(a));
 //		b.speedY = Math.sin(a)*((Math.abs(b.speedY) + Math.abs(p.speedY)) * Math.cos(a)
