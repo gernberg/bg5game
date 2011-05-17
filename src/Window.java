@@ -1,31 +1,39 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Panel;
 import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
-import java.util.Set;
 /**
  * Fönstret där allting visas, 
  * Stora delar är stulet från slutprojekt i TDDC77, 
- * men eftersom att det inte innehåller någon fysik hoppas vi att det är okej.  
+ * men eftersom att det inte innehåller någon fysik hoppas vi på att det är okej.  
  */
 public class Window extends JFrame {
 
-    /**
+	/**
 	 * 
 	 */
-	private static int WINDOW_WIDTH = 600;
-    private static int WINDOW_HEIGHT = 600;
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private final int WINDOW_WIDTH = 600;
+    private final int WINDOW_HEIGHT = 600;
     public int offsetY, offsetX;
     double i = 0;
     Color backgroundColor = Color.BLACK;
     BufferedImage buffer;
     Graphics2D b, bg2;
     Panel panel;
-
+    
+    
+    
+    Platform platform; // TODO SKA flyttas till coordinator
+    Ball ball; // TODO SKA flyttas till coordinator
     /**
      * Ritar ut all grafik
      * @param objects De objekt som skall synas på skärmen
@@ -43,60 +51,67 @@ public class Window extends JFrame {
         b.setColor(backgroundColor);
         b.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-        // TODO: Här borde det ritas ut objekt
+        // TODO: Här borde det ritas ut fler objekt
+        
+        platform.poll();
+        ball.poll();
+        
+        drawObject(platform, b);
+        drawObject(ball, b);
+        
+        if(platform.isStroboPop){
+        	drawStroboPop();
+        }
         
         // Detta ritar ut allting på riktigt :-)
         drawScreen();
     }
 
 
-    /**
-     * Ritar ut ett objekt, anropar drawImage
-     * @param o
-     */
-    public void drawObject(Entity o, Graphics2D b) {
-        drawImage(o.getImage(), o.getX(), o.getY(), o.getAngle(), o.getRotationCenterX(), o.getRotationCenterX(), b);
-    }
-
-    /**
-     * Ritar en bild, med rotation
-     * @param image Bilden som skall ritas ut
-     * @param x x-position
-     * @param y y-position
-     * @param rotation Rotering (mätt i radianer)
-     * @param rotationCenterX x-position för rotation, relativt bildens x position
-     * @param rotationCenterY y-position för rotation, relativt bildens y position
-     * @param b Graphics2D, buffern som skapas
-     */
-    public void drawImage(ImageObject image, int x, int y, double rotation, int rotationCenterX, int rotationCenterY, Graphics2D b) {
-        AffineTransform tfm = new AffineTransform();
-        tfm.rotate(rotation, x + rotationCenterX - offsetX + getWINDOW_WIDTH() / 2, y + rotationCenterY - offsetY + getWINDOW_HEIGHT() / 2);
-        b.setTransform(tfm);
-        b.drawImage(image.getImage(), x - offsetX + getWINDOW_WIDTH() / 2, y - offsetY + getWINDOW_HEIGHT() / 2, this);
-        tfm.rotate(0, 0, 0);
-    }
-
-    private int getWINDOW_HEIGHT() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	private int getWINDOW_WIDTH() {
-		// TODO Auto-generated method stub
-		return 0;
+    private void drawStroboPop() {
+    	if(Math.random()<0.5){
+    	drawObject(new Entity(0,0) {
+			public Color getColor(){
+				return new Color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+			}
+			@Override
+			public Shape getShape() {
+				// TODO Auto-generated method stub
+				return new Rectangle2D.Double(0,0,WINDOW_WIDTH, WINDOW_HEIGHT);
+			}
+		}, b);
+    	}
 	}
 
 
 	/**
-     * Ritar en bild, helt utan rotation.
-     * @param image
-     * @param x
-     * @param y
+     * Ritar ut ett objekt, anropar drawImage
+     * @param o
      */
-    public void drawImage(ImageObject image, Graphics2D b, int x, int y) {
-        drawImage(image, x, y, 0, 0, 0, b);
+    public void drawObject(Entity o, Graphics2D b) {
+        b.setColor(o.getColor());
+        b.fill(o.getShape());
     }
+
+    /**
+     * Ritar en form - Känns lite överflödig
+     * @param shape Formen som skall ritas ut
+     * @param b Graphics2D, buffern som skapas
+     */
+    public void drawShape(Shape shape, Graphics2D b) {
+        b.fill(shape);
+    }
+
+    private int getWINDOW_HEIGHT() {
+		return this.WINDOW_HEIGHT;
+	}
+
+
+	private int getWINDOW_WIDTH() {
+		return this.WINDOW_WIDTH;
+	}
+
+
 
     /**
      * Skapar alla viktiga saker
@@ -110,14 +125,19 @@ public class Window extends JFrame {
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(null);
         
+        // Instansierar de viktigaste objekten här
+        platform = new Platform(200,400);
+        ball = new Ball(250, 200);
         
         setVisible(true);
-        setResizable(false);
+        setResizable(true);
         createBufferStrategy(2);
     }
 
     public void addUserController(UserController userController) {
         panel.addKeyListener(userController);
+        // Berätta vilket objekt som userController skall påverka
+        userController.setPlatform(platform);
     }
 
     /**
