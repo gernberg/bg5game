@@ -12,5 +12,7 @@ public class Coordinator {
 	public void addToList(Entity e){
 		entitys.add(e);
 	}
-	
+	public LinkedList<Entity> getEntitys(){
+		return entitys;
+	}
 }

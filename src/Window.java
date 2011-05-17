@@ -6,6 +6,8 @@ import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.util.Iterator;
+
 import javax.swing.JFrame;
 /**
  * F√∂nstret d√§r allting visas, 
@@ -31,7 +33,7 @@ public class Window extends JFrame {
     Panel panel;
     
     
-    
+    Coordinator coordinator;
     Platform platform; // TODO SKA flyttas till coordinator
     Ball ball; // TODO SKA flyttas till coordinator
     /**
@@ -56,6 +58,13 @@ public class Window extends JFrame {
         platform.poll();
         ball.poll();
         
+        //eniterator som h‰mtar sammlingen frÂn cordinator och sedan ritar ut den ett och ett
+        for (Iterator iterator = coordinator.getEntitys().iterator(); iterator.hasNext();) {
+			Entity entity = (Entity) iterator.next();
+			
+			drawObject(entity, b);
+			
+		}
         drawObject(platform, b);
         drawObject(ball, b);
         
@@ -126,6 +135,7 @@ public class Window extends JFrame {
         setLocationRelativeTo(null);
         
         // Instansierar de viktigaste objekten h√§r
+        coordinator = new Coordinator();
         platform = new Platform(200,400);
         ball = new Ball(250, 200);
         
