@@ -8,7 +8,7 @@ public class Ball extends Entity {
 
 	public Ball(int x, int y) {
 		super(x, y);
-		
+		weight = 10;
 		// Röd boll!
 		super.setColor(Color.RED);
 	}
@@ -21,6 +21,6 @@ public class Ball extends Entity {
 	}
 	
 	public Shape getShape(){
-		return new Ellipse2D.Double(xkord, ykord, 10, 10);
+		return new Ellipse2D.Double(xkord, ykord, 20, 20);
 	}
 }

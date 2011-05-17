@@ -1,14 +1,16 @@
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Shape;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.security.spec.EllipticCurve;
 
 /**
  * Plattformen är den som användaren styr. Tar emot order från UserController
  * och försöker lyda så bra som möjligt
  */
 public class Platform extends Entity {
-	private double acceleratorX = 10;
+	private double acceleratorX = 20;
 	private double acceleratorY = 20;
 	private double movingX = 0;
 	private double movingY = 0;
@@ -16,6 +18,7 @@ public class Platform extends Entity {
 
 	public Platform(int x, int y) {
 		super(x, y);
+		weight = 50;
 		super.setColor(Color.CYAN);
 	}
 
@@ -85,7 +88,7 @@ public class Platform extends Entity {
 
 	@Override
 	public Shape getShape() {
-		return new Rectangle(xkord, ykord, 100, 10);
+		return new Ellipse2D.Double(xkord, ykord, 50, 50);
 	}
 
 	public void poll() {
