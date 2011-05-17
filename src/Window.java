@@ -35,8 +35,7 @@ public class Window extends JFrame {
     
     
    
-    Platform platform; // TODO SKA flyttas till coordinator
-    Ball ball; // TODO SKA flyttas till coordinator
+   
     /**
      * Ritar ut all grafik
      * @param objects De objekt som skall synas på skärmen
@@ -54,11 +53,7 @@ public class Window extends JFrame {
         b.setColor(backgroundColor);
         b.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-        // TODO: Här borde det ritas ut fler objekt
-        
-//        platform.poll();
-//        ball.poll();
-        
+       
         //eniterator som h�mtar sammlingen fr�n cordinator och sedan ritar ut den ett och ett
         for (Iterator iterator = entities.iterator(); iterator.hasNext();) {
 			Entity entity = (Entity) iterator.next();
@@ -66,12 +61,6 @@ public class Window extends JFrame {
 			drawObject(entity, b);
 			
 		}
-//        drawObject(platform, b);
-//        drawObject(ball, b);
-        
-//        if(platform.isStroboPop){
-//        	drawStroboPop();
-//        }
         
         // Detta ritar ut allting på riktigt :-)
         drawScreen();
@@ -135,11 +124,7 @@ public class Window extends JFrame {
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(null);
         
-        // Instansierar de viktigaste objekten här
-        
-//        platform = new Platform(200,400);
-//        ball = new Ball(250, 200);
-//        
+      
         setVisible(true);
         setResizable(true);
         createBufferStrategy(2);
@@ -148,7 +133,7 @@ public class Window extends JFrame {
     public void addUserController(UserController userController) {
         panel.addKeyListener(userController);
         // Berätta vilket objekt som userController skall påverka
-//        userController.setPlatform(platform);
+//        
     }
 
     /**

@@ -11,11 +11,16 @@ public class Coordinator {
 	
 	Window w;
 	UserController uc;
+	Platform platta;
+	Ball boll;
 	public Coordinator(Window w, UserController uc){
 		this.w = w;
 		this.uc = uc;
-		addToList(new Platform(200,400));
-		addToList(new Ball(250, 200));
+		platta = new Platform(200,400);
+		boll = new Ball(250, 200);
+		addToList(platta);
+		addToList(boll);
+		uc.setPlatform(platta);
 	}
 
 	public void addToList(Entity e){

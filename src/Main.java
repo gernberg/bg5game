@@ -19,9 +19,7 @@ public class Main {
 		// Window (w) är själva fönstret som vi ritar i 
 		 w = new Window();
 		 Coordinator coordinator = new Coordinator(w, uc);
-		
 	
-		
 		// Vi vill gärna knyta någon typ av kontroller till det fönstret vi arbetar med
 		// för att fånga händelser (mus/tangent)
 		w.addUserController(uc);
