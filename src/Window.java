@@ -40,7 +40,7 @@ public class Window extends JFrame {
      * Ritar ut all grafik
      * @param objects De objekt som skall synas på skärmen
      */
-    public void draw(List entities) {
+    public void draw(List entities, Boolean StorboMode) {
         b = buffer.createGraphics();
 
         // Gör så att allt blir härligt smooth
@@ -61,9 +61,12 @@ public class Window extends JFrame {
 			drawObject(entity, b);
 			
 		}
-        
+        if (StorboMode){
+        	drawStroboPop();
+        }
         // Detta ritar ut allting på riktigt :-)
         drawScreen();
+        
     }
 
 

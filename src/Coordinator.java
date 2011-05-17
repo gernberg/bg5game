@@ -13,6 +13,7 @@ public class Coordinator {
 	UserController uc;
 	Platform platta;
 	Ball boll;
+	Boolean stroboMode = false;
 	public Coordinator(Window w, UserController uc){
 		this.w = w;
 		this.uc = uc;
@@ -21,6 +22,7 @@ public class Coordinator {
 		addToList(platta);
 		addToList(boll);
 		uc.setPlatform(platta);
+		uc.setCoordinator(this);
 	}
 
 	public void addToList(Entity e){
@@ -36,7 +38,15 @@ public class Coordinator {
 			
 			entity.poll();
 		}
-		w.draw(entitys);
+		
+		w.draw(entitys, stroboMode);
+		
+	}
+
+	public void switchStroboMode() {
+		if (stroboMode == false){
+			stroboMode = true;
+		}else stroboMode = false;
 		
 	}
 }

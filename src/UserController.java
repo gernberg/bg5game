@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
  */
 public class UserController implements KeyListener {
 	Platform platform;
+	Coordinator c;
 	/**
 	 * Denna kallas på när en knapp trycks ner i fönstret.
 	 */
@@ -49,7 +50,7 @@ public class UserController implements KeyListener {
 				platform.moveRight(false);
 				break;
 			case KeyEvent.VK_S:
-				platform.isStroboPop=!platform.isStroboPop;
+				c.switchStroboMode();
 				break;
 		}
 
@@ -64,6 +65,9 @@ public class UserController implements KeyListener {
 	public void setPlatform(Platform platform) {
 		// TODO Auto-generated method stub
 		this.platform = platform;
+	}
+	public void setCoordinator(Coordinator c){
+		this.c = c;
 	}
 
 }
