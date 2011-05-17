@@ -93,6 +93,10 @@ public class Coordinator {
 	}
 
 	public void checkCollisions() {
+
+		checkCollisionsWhithWall(platta);
+		checkCollisionsWhithWall(boll);
+
 		for (Entity e : obstacles) {
 			// Detta är varken snyggt eller korrekt - men det ser helt okej ut.
 			if (boll.getShape().intersects((Rectangle2D) e.getShape())) {

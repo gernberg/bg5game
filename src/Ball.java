@@ -7,7 +7,7 @@ import java.awt.geom.Ellipse2D;
 public class Ball extends Entity {
 	public Ball(int x, int y) {
 		super(x, y);
-		weight = 10;
+		setWeight(10);
 		// Röd boll!
 		super.setColor(Color.RED);
 	}

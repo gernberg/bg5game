@@ -8,20 +8,25 @@ import java.awt.geom.Rectangle2D;
  * denna klass.
  */
 public abstract class Entity {
+	/**
+	 * Privata för att slippa trubbel.
+	 */
 	private int xkord, ykord, oldx, oldy;
+	private Color color;
+	private int weight = 10;
+	/**
+	 * Dessa borde också vara privata... vem orkar?
+	 */
 	public double speedX = 0;
 	public double speedY = 0;
-	private Color color;
-	protected int weight = 10;
 
 	public Entity(int x, int y) {
 		setX(x);
 		setY(y);
 	}
 
-	public double getAngle() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void setWeight(int weight) {
+		this.weight = weight;
 	}
 
 	public int getX() {
@@ -85,13 +90,17 @@ public abstract class Entity {
 		oldy = ykord;
 		ykord = y;
 	}
-
+	/**
+	 * Denna metod flyttar tillbaka objektet till dit man var "nyss"
+	 */
 	public void revertPosition() {
 		xkord = oldx;
 		ykord = oldy;
 	}
 	/**
-	 * Flyttar tillbaka och kontrollerar att man inte krockar längre.
+	 * Flyttar tillbaka objektet dit man var nyss
+	 * Kontrollerar även att man inte längre krockar med den Entity som orsaker krocken
+	 * Använd denna istället för bara "revertPosition" 
 	 */
 	public void revertPosition(Entity e) {
 		revertPosition();

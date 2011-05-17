@@ -18,7 +18,7 @@ public class Platform extends Entity {
 
 	public Platform(int x, int y) {
 		super(x, y);
-		weight = 50;
+		setWeight(50);
 		super.setColor(Color.CYAN);
 	}
 
