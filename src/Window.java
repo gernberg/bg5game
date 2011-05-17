@@ -4,6 +4,7 @@ import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 /**
@@ -28,8 +29,11 @@ public class Window extends JFrame {
     BufferedImage buffer;
     Graphics2D b, bg2;
     Panel panel;
-    Platform platform;
-    Ball ball;
+    
+    
+    
+    Platform platform; // TODO SKA flyttas till coordinator
+    Ball ball; // TODO SKA flyttas till coordinator
     /**
      * Ritar ut all grafik
      * @param objects De objekt som skall synas på skärmen
@@ -55,12 +59,32 @@ public class Window extends JFrame {
         drawObject(platform, b);
         drawObject(ball, b);
         
+        if(platform.isStroboPop){
+        	drawStroboPop();
+        }
+        
         // Detta ritar ut allting på riktigt :-)
         drawScreen();
     }
 
 
-    /**
+    private void drawStroboPop() {
+    	if(Math.random()<0.5){
+    	drawObject(new Entity(0,0) {
+			public Color getColor(){
+				return new Color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+			}
+			@Override
+			public Shape getShape() {
+				// TODO Auto-generated method stub
+				return new Rectangle2D.Double(0,0,WINDOW_WIDTH, WINDOW_HEIGHT);
+			}
+		}, b);
+    	}
+	}
+
+
+	/**
      * Ritar ut ett objekt, anropar drawImage
      * @param o
      */
@@ -101,6 +125,7 @@ public class Window extends JFrame {
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLocationRelativeTo(null);
         
+        // Instansierar de viktigaste objekten här
         platform = new Platform(200,400);
         ball = new Ball(250, 200);
         
@@ -111,6 +136,7 @@ public class Window extends JFrame {
 
     public void addUserController(UserController userController) {
         panel.addKeyListener(userController);
+        // Berätta vilket objekt som userController skall påverka
         userController.setPlatform(platform);
     }
 

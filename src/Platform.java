@@ -12,6 +12,7 @@ public class Platform extends Entity {
 	private double acceleratorY = 20;
 	private double movingX = 0;
 	private double movingY = 0;
+	public boolean isStroboPop = false;
 
 	public Platform(int x, int y) {
 		super(x, y);
