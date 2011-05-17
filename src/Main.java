@@ -3,6 +3,7 @@
  */
 public class Main {
 	private final int GAME_SPEED = 25;
+	private Window w;
 	public static void main(String[] args) {
 		Main m = new Main();
 		m.run();
@@ -12,11 +13,14 @@ public class Main {
 	* kontroller / uppritning och dylikt.
 	*/
 	private void run(){
-		// Window (w) är själva fönstret som vi ritar i 
-		Window w = new Window();
-		
 		// Vi instansierar vår kontroll som hanterar vad användaren gör för att påverka spelet.
 		UserController uc = new UserController();
+		
+		// Window (w) är själva fönstret som vi ritar i 
+		 w = new Window();
+		 Coordinator coordinator = new Coordinator(w, uc);
+		
+	
 		
 		// Vi vill gärna knyta någon typ av kontroller till det fönstret vi arbetar med
 		// för att fånga händelser (mus/tangent)
@@ -30,9 +34,9 @@ public class Main {
 			} catch (InterruptedException e) { /* Nej, det är inte så intressant */}
 			
 			// Den enda raden som gör något viktigt i denna loop
-			w.draw();
+			coordinator.update();
 		}
+		
 	}
 	
-
 }

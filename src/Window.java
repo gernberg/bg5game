@@ -7,6 +7,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.swing.JFrame;
 /**
@@ -33,14 +34,14 @@ public class Window extends JFrame {
     Panel panel;
     
     
-    Coordinator coordinator;
+   
     Platform platform; // TODO SKA flyttas till coordinator
     Ball ball; // TODO SKA flyttas till coordinator
     /**
      * Ritar ut all grafik
      * @param objects De objekt som skall synas på skärmen
      */
-    public void draw() {
+    public void draw(List entities) {
         b = buffer.createGraphics();
 
         // Gör så att allt blir härligt smooth
@@ -55,22 +56,22 @@ public class Window extends JFrame {
 
         // TODO: Här borde det ritas ut fler objekt
         
-        platform.poll();
-        ball.poll();
+//        platform.poll();
+//        ball.poll();
         
         //eniterator som h�mtar sammlingen fr�n cordinator och sedan ritar ut den ett och ett
-        for (Iterator iterator = coordinator.getEntitys().iterator(); iterator.hasNext();) {
+        for (Iterator iterator = entities.iterator(); iterator.hasNext();) {
 			Entity entity = (Entity) iterator.next();
 			
 			drawObject(entity, b);
 			
 		}
-        drawObject(platform, b);
-        drawObject(ball, b);
+//        drawObject(platform, b);
+//        drawObject(ball, b);
         
-        if(platform.isStroboPop){
-        	drawStroboPop();
-        }
+//        if(platform.isStroboPop){
+//        	drawStroboPop();
+//        }
         
         // Detta ritar ut allting på riktigt :-)
         drawScreen();
@@ -135,10 +136,10 @@ public class Window extends JFrame {
         setLocationRelativeTo(null);
         
         // Instansierar de viktigaste objekten här
-        coordinator = new Coordinator();
-        platform = new Platform(200,400);
-        ball = new Ball(250, 200);
         
+//        platform = new Platform(200,400);
+//        ball = new Ball(250, 200);
+//        
         setVisible(true);
         setResizable(true);
         createBufferStrategy(2);
@@ -147,7 +148,7 @@ public class Window extends JFrame {
     public void addUserController(UserController userController) {
         panel.addKeyListener(userController);
         // Berätta vilket objekt som userController skall påverka
-        userController.setPlatform(platform);
+//        userController.setPlatform(platform);
     }
 
     /**
