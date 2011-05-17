@@ -1,5 +1,6 @@
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Vector;
 
 /**
  * Denna klass borde hålla koll på allting som finns på banan just nu
@@ -70,25 +71,24 @@ public class Coordinator {
 	}
 
 	private void collide(Ball b, Platform p) {
-//		switchStroboMode()
-		double bspeedX = b.speedX;
-		double bspeedY = b.speedY;
-		double pspeedX = p.speedX;
-		double pspeedY = p.speedY;
-		calculateNewSpeed(b, p, bspeedX, bspeedY, pspeedX, pspeedY);
-		calculateNewSpeed(p, b, pspeedX, pspeedY, bspeedX, bspeedY);
-
-	}
-
-	private void calculateNewSpeed(Entity p, Entity b, double bspeedX,
-			double bspeedY, double pspeedX,	double pspeedY) {
-		double totalWeight  = b.getWeight() + p.getWeight();
-		b.speedX = ((b.getWeight()-p.getWeight())/totalWeight) * pspeedX;
-		b.speedX += ((2*p.getWeight())/totalWeight) * bspeedX;
-		b.speedY = ((b.getWeight()-p.getWeight())/totalWeight) * pspeedY;
-		b.speedY += ((2*p.getWeight())/totalWeight) * bspeedY;
+		Ball bi = b;
+		Platform pi = p;
+		b.revertPosition();
+		int x = (b.getCenterX() - p.getCenterX());
+		int y = (b.getCenterY() - p.getCenterY());
+		double a = 0;
+		if(x!=0){
+			a = Math.atan(y/x) + 3*Math.PI/2;
+		}
+		System.out.println("Alpha: " + a + " XY:" + x + "|" + y);
+		System.out.println((a/(2*Math.PI))*360);
 		
-	}
-	
+		b.speedX = b.speedX + ((b.speedY - p.speedY)* Math.cos(a));
+		b.speedY = b.speedY + ((b.speedY - p.speedY)* Math.sin(a));
+//		b.speedX = - Math.cos(a)*((Math.abs(b.speedX) + Math.abs(p.speedX)) * Math.sin(a)
+//					+ (Math.abs(b.speedY) + Math.abs(p.speedY)) * Math.cos(a));
+//		b.speedY = Math.sin(a)*((Math.abs(b.speedY) + Math.abs(p.speedY)) * Math.cos(a)
+//					+ (Math.abs(b.speedX) + Math.abs(p.speedX)) * Math.sin(a));
+	}	
 
 }
