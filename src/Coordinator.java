@@ -103,9 +103,15 @@ public class Coordinator {
 
 
 		for (Entity e : obstacles) {
+			if (boll.getShape().intersects((Rectangle2D) e.getShape())) {
+				boll.revertPosition((Rectangle2D) e.getShape());
+				boll.speedX = -boll.speedX;
+				boll.speedY = -boll.speedY;				
+			}
 			if (platta.getShape().intersects((Rectangle2D) e.getShape())) {
-
-				e.setColor(Color.green);
+				platta.revertPosition((Rectangle2D) e.getShape());
+				platta.speedX = -platta.speedX;
+				platta.speedY = -platta.speedY;				
 			}
 		}
 
@@ -151,8 +157,8 @@ public class Coordinator {
 
 		b.speedX = (Math.abs(k1)+Math.abs(k2))*cosa;
 		b.speedY = -(Math.abs(k1)+Math.abs(k2))*sina;
-		p.speedX = -b.speedX/10;
-		p.speedY = -b.speedY/10;
+		p.speedX = -b.speedX/5;
+		p.speedY = -b.speedY/5;
 	}	
 
 }

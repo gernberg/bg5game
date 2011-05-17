@@ -16,6 +16,12 @@ public class Ball extends Entity {
 	 */
 	public void poll(){
 		speedY += 9.82;
+		if(getY()>1000){
+			setY(0);
+			setX(200);
+			speedY = 0;
+			speedX = 0;
+		}
 		super.poll();
 	}
 	

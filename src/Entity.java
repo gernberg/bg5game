@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Shape;
+import java.awt.geom.Rectangle2D;
 
 /**
  * Denna klass är grundklassen för alla typer av objekt som syns på skärmen.
@@ -86,7 +87,19 @@ public abstract class Entity {
 	}
 
 	public void revertPosition() {
-		setX(oldx);
-		setY(oldy);
+		xkord = oldx;
+		ykord = oldy;
+	}
+	/**
+	 * Flyttar tillbaka och kontrollerar att man inte krockar längre.
+	 */
+	public void revertPosition(Rectangle2D rectangle) {
+		double tmpoldx = oldx;
+		double tmpoldy = oldy;
+		revertPosition();
+		if(getShape().intersects(rectangle)){
+			// Om dom fortfarande krockar - skrik till terminalen!
+			System.out.println("SKRIIIK!");
+		}
 	}
 }
