@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Vector;
 
 /**
  * Denna klass borde hÃ¥lla koll pÃ¥ allting som finns pÃ¥ banan just nu
@@ -95,11 +96,11 @@ public class Coordinator {
 		int obstalesCenterX, obstalesCenterY, plattaCenterX, plattaCenterY, bollCenterX, bollCenterY;
 		checkCollisionsWhithWall(platta);
 		checkCollisionsWhithWall(boll);
-		// här letar vi reda på plattans och bollens mitt.
 		plattaCenterX = platta.getX() + 25;
 		plattaCenterY = platta.getY() + 25;
 		bollCenterX = boll.getX() + 10;
 		bollCenterY = boll.getY() + 10;
+
 
 		for (Entity e : obstacles) {
 			if (platta.getShape().intersects((Rectangle2D) e.getShape())) {
@@ -108,42 +109,50 @@ public class Coordinator {
 			}
 		}
 
-		// här kollar vi om de överlappar.
-		if ((Math.pow(plattaCenterX - bollCenterX, 2) + Math.pow(plattaCenterY
-				- bollCenterY, 2)) < Math.pow(35, 2)) {
+		// hï¿½r kollar vi om de ï¿½verlappar.
+		if ((Math.pow(platta.getCenterX() - boll.getCenterX(), 2) + Math.pow(platta.getCenterY()
+				- boll.getCenterY(), 2)) < Math.pow(60, 2)) {
 			collide(boll, platta);
 		}
 
 	}
 
-	private void checkCollisionsWhithWall(Entity platta2) {
-		if (platta2.getShape().intersects((Rectangle2D) leftWall.getShape())){
-			platta2.speedX = -platta2.speedX;
-		}else if (platta2.getShape().intersects((Rectangle2D) rightWall.getShape())){
-			platta2.speedX = -platta2.speedX;
+	private void checkCollisionsWhithWall(Entity entity) {
+		if (entity.getShape().intersects((Rectangle2D) leftWall.getShape())){
+			entity.revertPosition();
+			entity.speedX = -entity.speedX;
+		}else if (entity.getShape().intersects((Rectangle2D) rightWall.getShape())){
+			entity.revertPosition();
+			entity.speedX = -entity.speedX;
 		}
 		
 	}
 
 	private void collide(Ball b, Platform p) {
-		// switchStroboMode();
-		double bspeedX = b.speedX;
-		double bspeedY = b.speedY;
-		double pspeedX = p.speedX;
-		double pspeedY = p.speedY;
-		calculateNewSpeed(b, p, bspeedX, bspeedY, pspeedX, pspeedY);
-		calculateNewSpeed(p, b, pspeedX, pspeedY, bspeedX, bspeedY);
+		double x = (b.getCenterX() - p.getCenterX());
+		double y = (b.getCenterY() - p.getCenterY());
+		double a = 0;
+		if(x!=0){
+			a = Math.atan(y/x);
+		}
+		if(x<0){
+			a = Math.PI - a;
+		}
+		if(x>0){
+			a = -a;
+		}
+		b.revertPosition();
+		System.out.println("Alpha: " + a + "gr:" +(a/(2.0*Math.PI))*360 +  " XY:" + x + "|" + y);
+		double cosa = Math.cos(a);
+		double sina = Math.sin(a);
 
-	}
+		double k1 = b.getSpeedX()*cosa + b.getSpeedY()*sina;
+		double k2 = p.getSpeedX()*cosa + p.getSpeedY()*sina;
 
-	private void calculateNewSpeed(Entity p, Entity b, double bspeedX,
-			double bspeedY, double pspeedX, double pspeedY) {
-		double totalWeight = b.getWeight() + p.getWeight();
-		b.speedX = ((b.getWeight() - p.getWeight()) / totalWeight) * pspeedX;
-		b.speedX += ((2 * p.getWeight()) / totalWeight) * bspeedX;
-		b.speedY = ((b.getWeight() - p.getWeight()) / totalWeight) * pspeedY;
-		b.speedY += ((2 * p.getWeight()) / totalWeight) * bspeedY;
-
-	}
+		b.speedX = (Math.abs(k1)+Math.abs(k2))*cosa;
+		b.speedY = -(Math.abs(k1)+Math.abs(k2))*sina;
+		p.speedX = -b.speedX/10;
+		p.speedY = -b.speedY/10;
+	}	
 
 }

@@ -12,7 +12,7 @@ public class Wall extends Entity {
 
 	@Override
 	public Shape getShape() {
-		return new Rectangle(xkord, ykord, 20, 6000);
+		return new Rectangle(getX(), getY(), 20, 6000);
 	}
 
 	@Override

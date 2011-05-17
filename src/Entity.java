@@ -7,22 +7,15 @@ import java.awt.Shape;
  * denna klass.
  */
 public abstract class Entity {
-<<<<<<< HEAD
-
-	private int xkord, ykord;
-	private double speed;
-	private Shape shape;
-=======
-	protected int xkord, ykord;
+	private int xkord, ykord, oldx, oldy;
 	public double speedX = 0;
 	public double speedY = 0;
 	private Color color;
 	protected int weight = 10;
->>>>>>> c1d5e1f02806d2a02f60557914ef506dc8ecd5ec
 
 	public Entity(int x, int y) {
-		xkord = x;
-		ykord = y;
+		setX(x);
+		setY(y);
 	}
 
 	public double getAngle() {
@@ -44,14 +37,6 @@ public abstract class Entity {
 		return speedX;
 	}
 
-<<<<<<< HEAD
-	public Shape getShape() {
-		return shape;
-	}
-
-	public void setShape(Shape form) {
-		this.shape = form;
-=======
 	public double getSpeedY() {
 		return speedY;
 	}
@@ -64,18 +49,44 @@ public abstract class Entity {
 
 	public void setColor(Color color) {
 		this.color = color;
->>>>>>> c1d5e1f02806d2a02f60557914ef506dc8ecd5ec
 	}
 
 	/**
 	 * Denna metod skall kallas på en gång per "spelvarv"
 	 */
 	public void poll() {
-		ykord += Math.round(speedY / 50);
-		xkord += Math.round(speedX / 50);
+		setY(getY() + Math.round(speedY / 50));
+		setX(getX() + Math.round(speedX / 50));
+	}
+
+	private void setX(long l) {
+		setX(Math.round(l));
+	}
+
+	private void setY(long l) {
+		setY(Math.round(l));
 	}
 
 	public int getWeight() {
 		return weight;
+	}
+	public int getCenterX(){
+		return (int) (getX() + getShape().getBounds().getWidth()/2);
+	}
+	public int getCenterY(){
+		return (int) (getY() + getShape().getBounds().getWidth()/2);
+	}
+	public void setX(int x){
+		oldx = xkord;
+		xkord = x;
+	}
+	public void setY(int y){
+		oldy = ykord;
+		ykord = y;
+	}
+
+	public void revertPosition() {
+		setX(oldx);
+		setY(oldy);
 	}
 }

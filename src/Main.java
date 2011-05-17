@@ -15,11 +15,7 @@ public class Main {
 	private void run(){
 		// Vi instansierar vår kontroll som hanterar vad användaren gör för att påverka spelet.
 		UserController uc = new UserController();
-<<<<<<< HEAD
-		w.addUserInput(uc);
-=======
-		
-		// Window (w) är själva fönstret som vi ritar i 
+			// Window (w) är själva fönstret som vi ritar i 
 		 w = new Window();
 		 Coordinator coordinator = new Coordinator(w, uc);
 	
@@ -28,7 +24,6 @@ public class Main {
 		w.addUserController(uc);
 
 		// Huvudloopen som körs oändligt länge (eller sålänge true är sant)
->>>>>>> c1d5e1f02806d2a02f60557914ef506dc8ecd5ec
 		while(true){
 			try {
 				// Vi vill gärna att loopen inte går helt okontrollerat utan med en liten vila.

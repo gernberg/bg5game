@@ -18,15 +18,15 @@ public class Obstacle extends Entity {
 
 	@Override
 	public Shape getShape() {
-		return new Rectangle(xkord, ykord, 40, 40);
+		return new Rectangle(getX(), getY(), 40, 40);
 	}
 	
 	/**
 	 * Flyttar till ett slumpat x och ett slumpat y, som är lite ovanför skärmen.
 	 */
 	public void resetPosition() {
-		xkord = (int) (Math.random()*Window.WINDOW_WIDTH);
-		ykord = -10 * (int) (Math.random()*10);
+		setX((int) (Math.random()*Window.WINDOW_WIDTH));
+		setY(-10 * (int) (Math.random()*10));
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class Obstacle extends Entity {
 	 */
 	@Override
 	public void poll() {
-		if (ykord > Window.WINDOW_HEIGHT) {
+		if (getY() > Window.WINDOW_HEIGHT) {
 			resetPosition();
 		}
 		super.poll();
