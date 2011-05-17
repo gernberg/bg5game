@@ -93,13 +93,10 @@ public abstract class Entity {
 	/**
 	 * Flyttar tillbaka och kontrollerar att man inte krockar längre.
 	 */
-	public void revertPosition(Rectangle2D rectangle) {
-		double tmpoldx = oldx;
-		double tmpoldy = oldy;
+	public void revertPosition(Entity e) {
 		revertPosition();
-		if(getShape().intersects(rectangle)){
-			// Om dom fortfarande krockar - skrik till terminalen!
-			System.out.println("SKRIIIK!");
+		if(getShape().intersects((Rectangle2D) e.getShape())){
+			// TODO Se till så att man inte krockar längre...
 		}
 	}
 }
