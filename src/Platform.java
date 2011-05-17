@@ -18,7 +18,7 @@ public class Platform extends Entity {
 
 	public Platform(int x, int y) {
 		super(x, y);
-		weight = 50;
+		setWeight(50);
 		super.setColor(Color.CYAN);
 	}
 
@@ -88,12 +88,16 @@ public class Platform extends Entity {
 
 	@Override
 	public Shape getShape() {
-		return new Ellipse2D.Double(xkord, ykord, 50, 50);
+		return new Ellipse2D.Double(getX(), getY(), 100, 100);
 	}
 
 	public void poll() {
 		speedX += acceleratorX * movingX;
 		speedY += acceleratorY * movingY + 9.82;
 		super.poll();
+	}
+
+	public Platform clone(){
+		return this.clone();
 	}
 }

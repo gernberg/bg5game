@@ -15,8 +15,7 @@ public class Main {
 	private void run(){
 		// Vi instansierar vår kontroll som hanterar vad användaren gör för att påverka spelet.
 		UserController uc = new UserController();
-		
-		// Window (w) är själva fönstret som vi ritar i 
+			// Window (w) är själva fönstret som vi ritar i 
 		 w = new Window();
 		 Coordinator coordinator = new Coordinator(w, uc);
 	
