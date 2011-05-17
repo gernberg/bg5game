@@ -93,15 +93,6 @@ public class Coordinator {
 	}
 
 	public void checkCollisions() {
-		int obstalesCenterX, obstalesCenterY, plattaCenterX, plattaCenterY, bollCenterX, bollCenterY;
-		checkCollisionsWhithWall(platta);
-		checkCollisionsWhithWall(boll);
-		plattaCenterX = platta.getX() + 25;
-		plattaCenterY = platta.getY() + 25;
-		bollCenterX = boll.getX() + 10;
-		bollCenterY = boll.getY() + 10;
-
-
 		for (Entity e : obstacles) {
 			// Detta är varken snyggt eller korrekt - men det ser helt okej ut.
 			if (boll.getShape().intersects((Rectangle2D) e.getShape())) {
