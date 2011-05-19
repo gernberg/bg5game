@@ -96,35 +96,42 @@ public class Coordinator {
 		}
 		stroboPlay(stroboMode);
 	}
-	
+
     public void stroboPlay(boolean a){
-    	new AePlayWave("sound/takeitjens.wav").start();
-//    	if(a){
-//   			music.start();
-//    	}else{
-////    		music.stop();
-//    		}
-    }
-//    AePlayWave music = new AePlayWave("sound/takeitjens.wav");
-    Thread music = new Thread(){
-    	public void run(){
-    		AePlayWave music = new AePlayWave("sound/takeitjens.wav");
-    		while(true){
-    			music.start();
-    		}
+    	if(a){
+    		music = new AePlayWave("sound/takeitjens.wav");
+    		music.start();
+    	}else{
+    		music.stop();
     	}
-    };
+    }
+    AePlayWave music = new AePlayWave("sound/takeitjens.wav");
+    public void playBounce(){
+    	new AePlayWave("sound/studs1.wav").start();
+    }
+//    Thread music = new Thread(){
+//    	public void run(){
+//    		AePlayWave music = new AePlayWave("sound/takeitjens.wav");
+//    		while(true){
+//    			music.start();
+//    		}
+//    	}
+//    };
     
 
 	public void checkCollisions() {
-
+		boolean collisionDetected = false;;
 		checkCollisionsWhithWall(platta);
 		checkCollisionsWhithWall(boll);
 		
-		platta.collisionTestAgainst(boll);
+		collisionDetected = collisionDetected || platta.collisionTestAgainst(boll);
 		for (Entity e : obstacles) {
-			platta.collisionTestAgainst(e);
-			boll.collisionTestAgainst(e);
+			collisionDetected = collisionDetected || platta.collisionTestAgainst(e);
+			collisionDetected = collisionDetected || boll.collisionTestAgainst(e);
+		}
+		
+		if(collisionDetected){
+			playBounce();
 		}
 
 	}

@@ -11,7 +11,7 @@ public abstract class Entity{
 	/**
 	 * Privata för att slippa trubbel.
 	 */
-	private int xkord, ykord, oldx, oldy;
+	private double xkord, ykord, oldx, oldy;
 	private Color color;
 	private int weight = 10;
 	/**
@@ -29,12 +29,12 @@ public abstract class Entity{
 		this.weight = weight;
 	}
 
-	public int getX() {
+	public double getX() {
 		// TODO Auto-generated method stub
 		return xkord;
 	}
 
-	public int getY() {
+	public double getY() {
 		// TODO Auto-generated method stub
 		return ykord;
 	}
@@ -61,18 +61,17 @@ public abstract class Entity{
 	 * Denna metod skall kallas på en gång per "spelvarv"
 	 */
 	public void poll() {
-		setY(getY() + Math.round(speedY / 50));
-		setX(getX() + Math.round(speedX / 50));
+		setY(getY() + speedY / 50);
+		setX(getX() + speedX / 50);
 	}
 
-	private void setX(long l) {
-		setX(Math.round(l));
-	}
-
-	private void setY(long l) {
-		setY(Math.round(l));
-	}
-
+//	private void setX(long l) {
+//		setX(l);
+//	}
+//
+//	private void setY(long l) {
+//		setY(l);
+//	}
 	public int getWeight() {
 		return weight;
 	}
@@ -82,11 +81,11 @@ public abstract class Entity{
 	public int getCenterY(){
 		return (int) (getY() + getRadius());
 	}
-	public void setX(int x){
+	public void setX(double x){
 		oldx = xkord;
 		xkord = x;
 	}
-	public void setY(int y){
+	public void setY(double y){
 		oldy = ykord;
 		ykord = y;
 	}
@@ -120,14 +119,16 @@ public abstract class Entity{
 	 * Kollision med de fasta objekten på banan
 	 * @param e
 	 */
-	public void collisionTestAgainst(Entity e) {
+	public boolean collisionTestAgainst(Entity e) {
 		/**
 		 * Kontrollerar om avståndet mellan objekten är 
 		 */
 		if ((Math.pow(e.getCenterX() - getCenterX(), 2) + Math.pow(e.getCenterY()
 				- getCenterY(), 2)) < Math.pow(getRadius()+e.getRadius(), 2)) {		
 			calculateCollisionChanges(this, e);
+			return true;
 		}
+		return false;
 		
 	}
 
@@ -180,6 +181,13 @@ public abstract class Entity{
 
 	public void setSpeedX(double speedX) {
 		this.speedX = speedX;
+	}
+
+	public int getIntX(){
+		return (int) Math.round(getX());
+	}
+	public int getIntY(){
+		return (int) Math.round(getY());
 	}
 	
 }

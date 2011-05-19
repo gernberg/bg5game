@@ -14,7 +14,7 @@ public class Wall extends Entity{
 	//private final Image wallPicturte = getImage(getCodeBase(), "images/wall.png");
 	@Override
 	public Shape getShape() {
-		return new Rectangle(getX(), getY(), 20, 6000);
+		return new Rectangle(getIntX(), getIntY(), 20, 6000);
 	}
 	
 //	public Image getPicture(){
