@@ -108,4 +108,8 @@ public abstract class Entity {
 			// TODO Se till så att man inte krockar längre...
 		}
 	}
+	
+	public double getRadius(){
+		return getShape().getBounds().getWidth();
+	}
 }

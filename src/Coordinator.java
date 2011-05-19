@@ -100,12 +100,13 @@ public class Coordinator {
 		checkCollisionsWhithWall(boll);
 
 		for (Entity e : obstacles) {
-			
+			platta.collide(e);
+			boll.collide(e);
 		}
 
 		// h�r kollar vi om de �verlappar.
 		if ((Math.pow(platta.getCenterX() - boll.getCenterX(), 2) + Math.pow(platta.getCenterY()
-				- boll.getCenterY(), 2)) < Math.pow(60, 2)) {
+				- boll.getCenterY(), 2)) < Math.pow(60, 2)) {			
 			collide(boll, platta);
 		}
 
