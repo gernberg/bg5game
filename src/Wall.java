@@ -5,14 +5,13 @@ import java.awt.Image;
 
 
 public class Wall extends Entity{
-	
-	//private final Image wallPicturte = getImage(getCodeBase(), "images/wall.png");
+
 	
 	public Wall(int x, int y) {
 		super(x, y);
 		super.setColor(Color.PINK);
 	}
-	
+	//private final Image wallPicturte = getImage(getCodeBase(), "images/wall.png");
 	@Override
 	public Shape getShape() {
 		return new Rectangle(getX(), getY(), 20, 6000);
