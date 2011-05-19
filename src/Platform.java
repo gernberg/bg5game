@@ -21,7 +21,7 @@ public class Platform extends Entity {
 		setWeight(50);
 		super.setColor(Color.CYAN);
 	}
-
+	
 	/**
 	 * Flyttar plattformen uppåt
 	 * 

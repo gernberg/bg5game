@@ -47,6 +47,13 @@ public abstract class Entity{
 		return speedY;
 	}
 
+	public boolean isAlive() {
+		if (getY() > Window.WINDOW_HEIGHT)
+			return true;
+		else 
+			return false;
+	}
+	
 	public abstract Shape getShape();
 
 	public Color getColor() {
