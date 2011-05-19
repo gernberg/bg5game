@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Shape;
@@ -28,12 +29,28 @@ public class Window extends JFrame {
     public static final int WINDOW_HEIGHT = 768;
     public int offsetY, offsetX;
     double i = 0;
+	private int score = 0;
     Color backgroundColor = Color.BLACK;
     BufferedImage buffer;
     Graphics2D b, bg2;
     Panel panel;
     
-    
+    /**
+     * Skapar alla viktiga saker
+     */
+    public Window() {
+        panel = new Panel();
+        buffer = new BufferedImage(WINDOW_WIDTH, WINDOW_HEIGHT, BufferedImage.TYPE_INT_RGB);
+        add(panel);
+        setTitle("BG5 - The Game");
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // Kul att det inte är så per default
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        setLocationRelativeTo(null);
+        
+        setVisible(true);
+        setResizable(true);
+        createBufferStrategy(2);
+    }
    
    
     /**
@@ -64,11 +81,25 @@ public class Window extends JFrame {
         if (StorboMode){
         	drawStroboPop();
         }
+        
         // Detta ritar ut allting på riktigt :-)
+        
+        drawScore(score++);
         drawScreen();
         
     }
 
+    /**
+     * Ritar ut poängen
+     * @param score poäng
+     */
+	public void drawScore(int score) {
+		String s = Integer.toString(score);
+		Font font = Font.getFont("Arial");
+		b.setFont(font);
+		b.setColor(Color.YELLOW);
+		b.drawChars(s.toCharArray(), 0, s.length(), 30, 50);
+	}
 
     private void drawStroboPop() {
     	if(Math.random()<0.5){
@@ -93,33 +124,6 @@ public class Window extends JFrame {
     public void drawObject(Entity o, Graphics2D b) {
         b.setColor(o.getColor());
         b.fill(o.getShape());
-    }
-
-    /**
-     * Ritar en form - Känns lite överflödig
-     * @param shape Formen som skall ritas ut
-     * @param b Graphics2D, buffern som skapas
-     */
-    public void drawShape(Shape shape, Graphics2D b) {
-        b.fill(shape);
-    }
-
-    /**
-     * Skapar alla viktiga saker
-     */
-    public Window() {
-        panel = new Panel();
-        buffer = new BufferedImage(WINDOW_WIDTH, WINDOW_HEIGHT, BufferedImage.TYPE_INT_RGB);
-        add(panel);
-        setTitle("BG5 - The Game");
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // Kul att det inte är så per default
-        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        setLocationRelativeTo(null);
-        
-      
-        setVisible(true);
-        setResizable(true);
-        createBufferStrategy(2);
     }
 
     public void addUserController(UserController userController) {
