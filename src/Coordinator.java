@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -164,6 +166,7 @@ public class Coordinator {
 		b.speedY = -(Math.abs(k1)+Math.abs(k2))*sina;
 		p.speedX = -b.speedX/5;
 		p.speedY = -b.speedY/5;
-	}	
+	}
+	
 
 }

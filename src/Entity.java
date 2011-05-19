@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D;
  * För att skapa ett nytt objekt som visas på skärmen ärver man alltså
  * denna klass.
  */
-public abstract class Entity {
+public abstract class Entity{
 	/**
 	 * Privata för att slippa trubbel.
 	 */
