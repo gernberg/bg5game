@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Shape;
+import java.awt.geom.Ellipse2D;
 
 /**
  * Fallande hinder jao.
@@ -18,7 +19,8 @@ public class Obstacle extends Entity {
 
 	@Override
 	public Shape getShape() {
-		return new Rectangle(getX(), getY(), 40, 40);
+		return new Ellipse2D.Double(getX(), getY(), 50, 50);
+//		return new Rectangle(getX(), getY(), 40, 40);
 	}
 	
 	/**

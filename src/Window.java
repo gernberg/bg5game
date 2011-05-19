@@ -25,7 +25,7 @@ public class Window extends JFrame {
 	 * 
 	 */
 	public static final int WINDOW_WIDTH = 600;
-    public static final int WINDOW_HEIGHT = 768;
+    public static final int WINDOW_HEIGHT = 800;
     public int offsetY, offsetX;
     double i = 0;
     Color backgroundColor = Color.BLACK;

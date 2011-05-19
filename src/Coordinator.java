@@ -100,19 +100,7 @@ public class Coordinator {
 		checkCollisionsWhithWall(boll);
 
 		for (Entity e : obstacles) {
-			// Detta är varken snyggt eller korrekt - men det ser helt okej ut.
-			if (boll.getShape().intersects((Rectangle2D) e.getShape())) {
-				boll.revertPosition(e);
-				boll.speedX = -boll.speedX;
-				boll.speedY = -boll.speedY;				
-			}
-			if (platta.getShape().intersects((Rectangle2D) e.getShape())) {
-
-				platta.revertPosition(e);
-				platta.speedX = -platta.speedX;
-				platta.speedY = -platta.speedY;				
-
-			}
+			
 		}
 
 		// h�r kollar vi om de �verlappar.
