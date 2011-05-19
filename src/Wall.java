@@ -6,7 +6,7 @@ import java.awt.Image;
 
 public class Wall extends Entity{
 	
-	private final Image wallPicturte = getImage(getCodeBase(), "wall.png");
+	//private final Image wallPicturte = getImage(getCodeBase(), "images/wall.png");
 	
 	public Wall(int x, int y) {
 		super(x, y);
@@ -18,9 +18,9 @@ public class Wall extends Entity{
 		return new Rectangle(getX(), getY(), 20, 6000);
 	}
 	
-	public Image getPicture(){
-		return wallPicturte;
-	}
+//	public Image getPicture(){
+//		return wallPicturte;
+//	}
 
 	@Override
 	public void poll() {
