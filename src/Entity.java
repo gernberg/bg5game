@@ -1,13 +1,14 @@
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
+import java.applet.*;
 
 /**
  * Denna klass är grundklassen för alla typer av objekt som syns på skärmen.
  * För att skapa ett nytt objekt som visas på skärmen ärver man alltså
  * denna klass.
  */
-public abstract class Entity {
+public abstract class Entity extends Applet{
 	/**
 	 * Privata för att slippa trubbel.
 	 */
