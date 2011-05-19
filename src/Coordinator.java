@@ -92,7 +92,32 @@ public class Coordinator {
 			stroboMode = false;
 			Main.GAME_SPEED = 25;
 		}
+		stroboPlay(stroboMode);
 	}
+	
+    public void stroboPlay(boolean a){
+    	Thread r=new Thread()
+        {
+        public void run()
+        {
+        	AePlayWave ae = new AePlayWave("DasIsStrobo.wav");    
+        	ae.run();
+        	AePlayWave swe = new AePlayWave("Strobe2.wav");    	
+        	while(true){
+        	swe.run();
+        	}
+        	
+        }
+        };
+        r.start();
+        r.stop();
+//        Thread t=new Thread(r);
+//        t.start();
+    	
+
+    }
+
+    
 
 	public void checkCollisions() {
 
