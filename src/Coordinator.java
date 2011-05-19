@@ -74,6 +74,10 @@ public class Coordinator {
 
 		return array;
 	}
+	
+	private void gameOver() {
+		// game over, game over man.
+	}
 
 	public void update() {
 		for (Iterator iterator = entities.iterator(); iterator.hasNext();) {
@@ -83,6 +87,10 @@ public class Coordinator {
 		}
 		checkCollisions();
 		w.draw(entities, stroboMode);
+		
+		if (!platta.isAlive()) {
+			gameOver();
+		}
 
 	}
 
