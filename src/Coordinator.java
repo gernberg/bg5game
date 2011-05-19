@@ -98,17 +98,17 @@ public class Coordinator {
 
 		checkCollisionsWhithWall(platta);
 		checkCollisionsWhithWall(boll);
-
+		
+		platta.collisionTestAgainst(boll);
 		for (Entity e : obstacles) {
-			platta.collide(e);
-			boll.collide(e);
+			platta.collisionTestAgainst(e);
+			boll.collisionTestAgainst(e);
 		}
-
 		// h�r kollar vi om de �verlappar.
-		if ((Math.pow(platta.getCenterX() - boll.getCenterX(), 2) + Math.pow(platta.getCenterY()
-				- boll.getCenterY(), 2)) < Math.pow(60, 2)) {			
-			collide(boll, platta);
-		}
+//		if ((Math.pow(platta.getCenterX() - boll.getCenterX(), 2) + Math.pow(platta.getCenterY()
+//				- boll.getCenterY(), 2)) < Math.pow(60, 2)) {			
+//			collide(boll, platta);
+//		}
 
 	}
 

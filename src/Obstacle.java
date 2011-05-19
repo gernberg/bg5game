@@ -14,6 +14,7 @@ public class Obstacle extends Entity {
 	public Obstacle(int x, int y) {
 		super(x, y);
 		super.setColor(Color.YELLOW);
+		setWeight(Integer.MAX_VALUE);
 		speedY = 100;
 	}
 
@@ -41,7 +42,16 @@ public class Obstacle extends Entity {
 		}
 		super.poll();
 	}
-	
+
+	public void revertPosition(){
+		// Gör igenting, Obstacles ångrar aldrig vart dom varit!
+	}
+	public void setSpeedX(double speedX){
+		// Gör igenting, Obstacles har aldrig någon hastighet!
+	}
+	public void setSpeedY(double speedY){
+		// Gör igenting, Obstacles har aldrig någon hastighet!
+	}
 	
 
 }

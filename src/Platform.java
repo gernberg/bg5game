@@ -100,12 +100,4 @@ public class Platform extends Entity {
 	public Platform clone(){
 		return this.clone();
 	}
-	/**
-	 * Kollision med de fasta objekten på banan
-	 * @param e
-	 */
-	public void collide(Entity e) {
-		if ((Math.pow(e.getCenterX() - getCenterX(), 2) + Math.pow(e.getCenterY()
-				- getCenterY(), 2)) < Math.pow(getRadius()+e.getRadius(), 2)) {		
-	}
 }
