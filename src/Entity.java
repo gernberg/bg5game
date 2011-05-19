@@ -48,10 +48,9 @@ public abstract class Entity{
 	}
 
 	public boolean isAlive() {
-		if (getY() > Window.WINDOW_HEIGHT)
-			return true;
-		else 
+		if (getIntY() > Window.WINDOW_HEIGHT)
 			return false;
+		return true;
 	}
 	
 	public abstract Shape getShape();

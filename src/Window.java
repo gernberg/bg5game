@@ -142,4 +142,5 @@ public class Window extends JFrame {
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
+
 }

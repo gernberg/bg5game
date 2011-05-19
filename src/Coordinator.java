@@ -6,6 +6,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  * Denna klass borde hålla koll på allting som finns på banan just nu
  */
@@ -24,6 +27,8 @@ public class Coordinator {
 	Ball boll;
 	Wall leftWall, rightWall;
 	Boolean stroboMode = false;
+
+	private boolean playing = true; // Spelar vi?
 
 	public Coordinator(Window w, UserController uc) {
 		this.w = w;
@@ -77,21 +82,26 @@ public class Coordinator {
 	
 	private void gameOver() {
 		// game over, game over man.
+		playGameOver();
+		JOptionPane.showMessageDialog(new JFrame(), "You lose, loser...\nKein mehr strobopop für dich!", "ACHTUNG ACHTUNG!",
+			    JOptionPane.WARNING_MESSAGE);
+		playing = false;
 	}
 
 	public void update() {
-		for (Iterator iterator = entities.iterator(); iterator.hasNext();) {
-			Entity entity = (Entity) iterator.next();
-
-			entity.poll();
+		if(playing){
+			for (Iterator iterator = entities.iterator(); iterator.hasNext();) {
+				Entity entity = (Entity) iterator.next();
+	
+				entity.poll();
+			}
+			checkCollisions();
+			w.draw(entities, stroboMode);
+			
+			if (!platta.isAlive()) {
+				gameOver();
+			}
 		}
-		checkCollisions();
-		w.draw(entities, stroboMode);
-		
-		if (!platta.isAlive()) {
-			gameOver();
-		}
-
 	}
 
 	public void switchStroboMode() {
@@ -116,6 +126,9 @@ public class Coordinator {
     AePlayWave music = new AePlayWave("sound/takeitjens.wav");
     public void playBounce(){
     	new AePlayWave("sound/studs1.wav").start();
+    }
+    public void playGameOver(){
+    	new AePlayWave("sound/game-over.wav").start();
     }
 //    Thread music = new Thread(){
 //    	public void run(){
