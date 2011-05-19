@@ -96,27 +96,22 @@ public class Coordinator {
 	}
 	
     public void stroboPlay(boolean a){
-    	Thread r=new Thread()
-        {
-        public void run()
-        {
-        	AePlayWave ae = new AePlayWave("DasIsStrobo.wav");    
-        	ae.run();
-        	AePlayWave swe = new AePlayWave("Strobe2.wav");    	
-        	while(true){
-        	swe.run();
-        	}
-        	
-        }
-        };
-        r.start();
-        r.stop();
-//        Thread t=new Thread(r);
-//        t.start();
-    	
-
+    	new AePlayWave("sound/takeitjens.wav").start();
+//    	if(a){
+//   			music.start();
+//    	}else{
+////    		music.stop();
+//    		}
     }
-
+//    AePlayWave music = new AePlayWave("sound/takeitjens.wav");
+    Thread music = new Thread(){
+    	public void run(){
+    		AePlayWave music = new AePlayWave("sound/takeitjens.wav");
+    		while(true){
+    			music.start();
+    		}
+    	}
+    };
     
 
 	public void checkCollisions() {
@@ -129,11 +124,6 @@ public class Coordinator {
 			platta.collisionTestAgainst(e);
 			boll.collisionTestAgainst(e);
 		}
-		// h�r kollar vi om de �verlappar.
-//		if ((Math.pow(platta.getCenterX() - boll.getCenterX(), 2) + Math.pow(platta.getCenterY()
-//				- boll.getCenterY(), 2)) < Math.pow(60, 2)) {			
-//			collide(boll, platta);
-//		}
 
 	}
 
