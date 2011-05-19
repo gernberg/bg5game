@@ -87,9 +87,11 @@ public class Coordinator {
 	public void switchStroboMode() {
 		if (stroboMode == false) {
 			stroboMode = true;
-		} else
+			Main.GAME_SPEED = 10;
+		} else{
 			stroboMode = false;
-
+			Main.GAME_SPEED = 25;
+		}
 	}
 
 	public void checkCollisions() {

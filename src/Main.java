@@ -2,7 +2,7 @@
  * Main startar upp allting, och instansierar det viktiga funktionerna.
  */
 public class Main {
-	private final int GAME_SPEED = 25;
+	public static int GAME_SPEED = 25;
 	private Window w;
 	public static void main(String[] args) {
 		Main m = new Main();
