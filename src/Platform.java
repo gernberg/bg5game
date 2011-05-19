@@ -21,13 +21,6 @@ public class Platform extends Entity {
 		setWeight(50);
 		super.setColor(Color.CYAN);
 	}
-
-	public boolean isAlive() {
-		if (getY() > Window.WINDOW_HEIGHT)
-			return true;
-		else 
-			return false;
-	}
 	
 	/**
 	 * Flyttar plattformen uppåt
