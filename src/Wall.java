@@ -15,7 +15,7 @@ public class Wall extends Entity{
 	}
 	@Override
 	public Shape getShape() {
-		return new Rectangle(getIntX(), getIntY(), 20, 6000);
+		return new Rectangle(getIntX(), getIntY(), 20, Window.WINDOW_HEIGHT);
 	}
 	
 	public Image getPicture(){

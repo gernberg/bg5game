@@ -30,7 +30,7 @@ public class Obstacle extends Entity {
 	
 	public Image getPicture(){
 		try {
-    		itemImage = ImageIO.read(new File("images/spelarboll_cerise.png"));
+    		itemImage = ImageIO.read(new File("images/Spelarboll_cerise.png"));
     		} catch (IOException ex) {
     			//Lol
     		}

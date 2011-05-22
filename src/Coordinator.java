@@ -41,8 +41,8 @@ public class Coordinator {
 		uc.setCoordinator(this);
 
 		// Väggar utanför skärmen, längs kanterna, för studs...
-		leftWall = new Wall(-20 + 10, -3000);
-		rightWall = new Wall(Window.WINDOW_WIDTH - 10, -3000);
+		leftWall = new Wall(0, 0);
+		rightWall = new Wall(Window.WINDOW_WIDTH - 10, 0);
 		addToList(leftWall);
 		addToList(rightWall);
 
@@ -107,10 +107,10 @@ public class Coordinator {
 	public void switchStroboMode() {
 		if (stroboMode == false) {
 			stroboMode = true;
-			Main.GAME_SPEED = 10;
+			Main.GAME_SPEED = Main.GAME_SPEED / 2;
 		} else{
 			stroboMode = false;
-			Main.GAME_SPEED = 25;
+			Main.GAME_SPEED = Main.GAME_SPEED * 2;
 		}
 		stroboPlay(stroboMode);
 	}
@@ -158,7 +158,13 @@ public class Coordinator {
 	}
 
 
-	private void checkCollisionsWhithWall(Entity platta2) {
+	private void checkCollisionsWhithWall(Entity e) {
+		// Vi behöver bara kolla objektens X-position samt X-position+maxbredd 
+		if(e.getX()<=20 ||
+				(e.getX()+e.getRadius()*2) >= (Window.WINDOW_WIDTH-20)){
+			e.speedX = -e.speedX;
+		}
+		/*
 		if (platta2.getShape().intersects((Rectangle2D) leftWall.getShape())) {
 			platta2.speedX = -platta2.speedX;
 		} else if (platta2.getShape().intersects(
@@ -166,7 +172,7 @@ public class Coordinator {
 			platta2.speedX = -platta2.speedX;
 
 		}
-
+		*/
 	}
 
 

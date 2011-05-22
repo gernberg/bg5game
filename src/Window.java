@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.Toolkit;
@@ -111,6 +112,11 @@ public class Window extends JFrame {
 				// TODO Auto-generated method stub
 				return new Rectangle2D.Double(0,0,WINDOW_WIDTH, WINDOW_HEIGHT);
 			}
+			@Override
+			public Image getPicture() {
+				// TODO Auto-generated method stub
+				return null;
+			}
 		}, b);
     	}
 	}
@@ -121,8 +127,10 @@ public class Window extends JFrame {
      * @param o
      */
     public void drawObject(Entity o, Graphics2D b) {
-        b.setColor(Color.black);
-        b.fill(o.getShape());
+        b.setColor(o.getColor());
+        if(o.getPicture() == null){
+        	b.fill(o.getShape());
+        }
         b.drawImage(o.getPicture(), o.getIntX(), o.getIntY(), this);
     }
 
