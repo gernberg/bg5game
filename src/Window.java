@@ -83,7 +83,7 @@ public class Window extends JFrame {
         }
         
         // Detta ritar ut allting på riktigt :-)
-        Score.increase();
+        Score.increaseScore();
         drawScore(Score.getScore());
         drawScreen();
         

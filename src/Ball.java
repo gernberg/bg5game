@@ -18,9 +18,6 @@ public class Ball extends Entity {
 		super.setColor(Color.RED);
 	}
 	
-	public void HejGustav(){
-		System.out.println("FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU!!!!");
-	}
 	
 	/**
 	 * Vi vill att bollen skall falla konstant
