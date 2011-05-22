@@ -139,34 +139,44 @@ public abstract class Entity{
 	}
 
 	private void calculateCollisionChanges(Entity e1, Entity e2) {
-		double x = (e1.getCenterX() - e2.getCenterX());
-		double y = (e1.getCenterY() - e2.getCenterY());
-		double a = 0;
-		if(x!=0){
-			a = Math.atan(y/x);
+		// Beräkna fram vinkeln i kollisionen
+		double dx = (e1.getCenterX() - e2.getCenterX());
+		double dy = (e1.getCenterY() - e2.getCenterY());
+		
+		double alpha = 0;
+		// Om man krockar så att x är 0 kommer vi få division med 0, vilket är lite osmidigt
+		// däremot vet vi att för x=0 är a=0, så vi behöver inte räkna ut a.
+		if(dx!=0){
+			alpha = Math.atan(dy/dx);
 		}
-//		if(x<0){
-//			a = Math.PI - a;
-//		}
-//		if(x>0){
-//			a = -a;
-//		}
+		
+		// Sätt objekten där dom var precis innan krocken, detta gör vi för att förhindra att saker fastnar i varandra.
+		// TODO: Tror dock ironiskt nog att det är denna kod som gör att man kan få bollen att lagga fast i väggen.
 		e1.revertPosition();
 		e2.revertPosition();
-		System.out.println("Alpha: " + a + "gr:" +(a/(2.0*Math.PI))*360 +  " XY:" + x + "|" + y);
-		double cosa = Math.cos(a);
-		double sina = Math.sin(a);
 
+		// För läsbarhetens skull definierar vi cosa och sina 
+		double cosa = Math.cos(alpha);
+		double sina = Math.sin(alpha);
+
+		// För läsbarhetens skull har vi också k1 och k2 definierat här
+		// De är hastigheterna i k^-led
 		double k1 = e1.getSpeedX()*cosa + e1.getSpeedY()*sina;
 		double k2 = e2.getSpeedX()*cosa + e2.getSpeedY()*sina;
+		
+		// Eftersom att vi är "dumma" och använder hastigheter i x,y led så behöver vi 
+		// ta ut komposanterna x resp y för k1 och k2
 		double k1x = (k1)*cosa;
 		double k2x = (k2)*cosa;
 		double k1y = (k1)*sina;
 		double k2y = (k2)*sina;
 		
+		// Definierar massor som m1 / m2 för läsbarhetens skull
 		double m1 = e1.getWeight();
 		double m2 = e2.getWeight();
-
+		
+		// Här händer all magi :-)
+		// Vi använder formel för kollision i en riktning, två gånger dvs. för x / y
 		e1.setSpeedX(((m1-m2)/(m1+m2))*k1x+(2*m2/(m1+m2))*k2x);
 		e1.setSpeedY((((m1-m2)/(m1+m2))*k1y+(2*m2/(m1+m2))*k2y));
 		e2.setSpeedX((((m2-m1)/(m1+m2))*k2x+(2*m1/(m1+m2))*k1x));
