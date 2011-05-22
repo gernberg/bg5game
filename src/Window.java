@@ -121,8 +121,9 @@ public class Window extends JFrame {
      * @param o
      */
     public void drawObject(Entity o, Graphics2D b) {
-        b.setColor(o.getColor());
+        b.setColor(Color.black);
         b.fill(o.getShape());
+        b.drawImage(o.getPicture(), o.getIntX(), o.getIntY(), this);
     }
 
     public void addUserController(UserController userController) {
