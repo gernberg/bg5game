@@ -163,8 +163,7 @@ public abstract class Entity{
 		double k2x = (k2)*cosa;
 		double k1y = (k1)*sina;
 		double k2y = (k2)*sina;
-		System.out.println(e1 + ":" + k1x +":"+ k1y);
-		System.out.println(e2 + ":" + k2x +":"+ k2y);
+		
 		double m1 = e1.getWeight();
 		double m2 = e2.getWeight();
 
@@ -172,13 +171,6 @@ public abstract class Entity{
 		e1.setSpeedY((((m1-m2)/(m1+m2))*k1y+(2*m2/(m1+m2))*k2y));
 		e2.setSpeedX((((m2-m1)/(m1+m2))*k2x+(2*m1/(m1+m2))*k1x));
 		e2.setSpeedY((((m2-m1)/(m1+m2))*k2y+(2*m1/(m1+m2))*k1y));
-		
-		
-//		e1.setSpeedX(Math.abs(k1)*cosa + Math.abs(k2)*cosa);
-//		e1.setSpeedY(-(Math.abs(k1)*sina+Math.abs(k2)*sina));
-//		
-//		e2.setSpeedX(-e1.speedX/e2.getWeight());
-//		e2.setSpeedY(-e1.speedY/e2.getWeight());
 	}
 
 	public void setSpeedY(double speedY) {

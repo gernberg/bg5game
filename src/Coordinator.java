@@ -169,32 +169,5 @@ public class Coordinator {
 
 	}
 
-	private void collide(Ball b, Platform p) {
-		double x = (b.getCenterX() - p.getCenterX());
-		double y = (b.getCenterY() - p.getCenterY());
-		double a = 0;
-		if(x!=0){
-			a = Math.atan(y/x);
-		}
-		if(x<0){
-			a = Math.PI - a;
-		}
-		if(x>0){
-			a = -a;
-		}
-		b.revertPosition();
-		System.out.println("Alpha: " + a + "gr:" +(a/(2.0*Math.PI))*360 +  " XY:" + x + "|" + y);
-		double cosa = Math.cos(a);
-		double sina = Math.sin(a);
-
-		double k1 = b.getSpeedX()*cosa + b.getSpeedY()*sina;
-		double k2 = p.getSpeedX()*cosa + p.getSpeedY()*sina;
-
-		b.speedX = (Math.abs(k1)+Math.abs(k2))*cosa;
-		b.speedY = -(Math.abs(k1)+Math.abs(k2))*sina;
-		p.speedX = -b.speedX/5;
-		p.speedY = -b.speedY/5;
-	}
-	
 
 }
