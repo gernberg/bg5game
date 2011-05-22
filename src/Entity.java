@@ -110,9 +110,6 @@ public abstract class Entity{
 	 */
 	public void revertPosition(Entity e) {
 		revertPosition();
-		if(getShape().intersects((Rectangle2D) e.getShape())){
-			// TODO Se till så att man inte krockar längre...
-		}
 	}
 	/**
 	 * 

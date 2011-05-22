@@ -12,6 +12,7 @@ public class Wall extends Entity{
 	public Wall(int x, int y) {
 		super(x, y);
 		super.setColor(Color.PINK);
+		speedY = 100;
 	}
 	@Override
 	public Shape getShape() {
@@ -30,6 +31,10 @@ public class Wall extends Entity{
 	@Override
 	public void poll() {
 		// Ingen förflyttning
+		super.poll();
+		if(getIntY()>0){
+			setY(-20);
+		}
 	}
 	
 	
