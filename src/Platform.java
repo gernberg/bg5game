@@ -1,9 +1,14 @@
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.security.spec.EllipticCurve;
+import javax.imageio.ImageIO;
 
 /**
  * Plattformen är den som användaren styr. Tar emot order från UserController
@@ -15,6 +20,7 @@ public class Platform extends Entity {
 	private double movingX = 0;
 	private double movingY = 0;
 	public boolean isStroboPop = false;
+	private BufferedImage itemImage;
 
 	public Platform(int x, int y) {
 		super(x, y);
@@ -90,6 +96,15 @@ public class Platform extends Entity {
 	public Shape getShape() {
 		return new Ellipse2D.Double(getX(), getY(), 100, 100);
 	}
+	
+	public Image getPicture(){
+		try {
+    		itemImage = ImageIO.read(new File("images/Platformsboll_green.png"));
+    		} catch (IOException ex) {
+    			//Lol
+    		}
+		return itemImage;
+	}
 
 	public void poll() {
 		speedX += acceleratorX * movingX;
@@ -100,4 +115,5 @@ public class Platform extends Entity {
 	public Platform clone(){
 		return this.clone();
 	}
+
 }

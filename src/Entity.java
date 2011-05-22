@@ -1,6 +1,5 @@
-import java.awt.Color;
-import java.awt.Shape;
-import java.awt.geom.Rectangle2D;
+import java.awt.*;
+import javax.imageio.ImageIO;
 
 /**
  * Denna klass är grundklassen för alla typer av objekt som syns på skärmen.
@@ -54,6 +53,8 @@ public abstract class Entity{
 	}
 	
 	public abstract Shape getShape();
+	
+	public abstract Image getPicture();
 
 	public Color getColor() {
 		return color;

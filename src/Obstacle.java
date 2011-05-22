@@ -1,7 +1,10 @@
-import java.awt.Color;
-import java.awt.Rectangle;
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.Ellipse2D;
+import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Fallande hinder jao.
@@ -10,7 +13,8 @@ import java.awt.geom.Ellipse2D;
  *
  */
 public class Obstacle extends Entity {
-
+	private BufferedImage itemImage;
+	
 	public Obstacle(int x, int y) {
 		super(x, y);
 		super.setColor(Color.YELLOW);
@@ -22,6 +26,15 @@ public class Obstacle extends Entity {
 	public Shape getShape() {
 		return new Ellipse2D.Double(getX(), getY(), 50, 50);
 //		return new Rectangle(getX(), getY(), 40, 40);
+	}
+	
+	public Image getPicture(){
+		try {
+    		itemImage = ImageIO.read(new File("images/spelarboll_cerise.png"));
+    		} catch (IOException ex) {
+    			//Lol
+    		}
+		return itemImage;
 	}
 	
 	/**

@@ -1,25 +1,31 @@
-import java.awt.Color;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.Image;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 
 public class Wall extends Entity{
-
+	private BufferedImage itemImage;
 	
 	public Wall(int x, int y) {
 		super(x, y);
 		super.setColor(Color.PINK);
 	}
-	//private final Image wallPicturte = getImage(getCodeBase(), "images/wall.png");
 	@Override
 	public Shape getShape() {
 		return new Rectangle(getIntX(), getIntY(), 20, 6000);
 	}
 	
-//	public Image getPicture(){
-//		return wallPicturte;
-//	}
+	public Image getPicture(){
+		try {
+    		itemImage = ImageIO.read(new File("images/wall.png"));
+    		} catch (IOException ex) {
+    			//Lol
+    		}
+		return itemImage;
+	}
 
 	@Override
 	public void poll() {
