@@ -16,7 +16,10 @@ public class Ball extends Entity {
 	 */
 	public void poll(){
 		speedY += 9.82;
-		if(getY()>1000){
+		// Om bollen tappas
+		if(getY()>Window.WINDOW_HEIGHT){
+			// Ändra poängen
+			Score.ballDropped();
 			setY(0);
 			setX(200);
 			speedY = 0;

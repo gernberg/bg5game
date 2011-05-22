@@ -29,8 +29,7 @@ public class Window extends JFrame {
     public static final int WINDOW_HEIGHT = 800;
     public int offsetY, offsetX;
     double i = 0;
-	private int score = 0;
-    Color backgroundColor = Color.BLACK;
+	Color backgroundColor = Color.BLACK;
     BufferedImage buffer;
     Graphics2D b, bg2;
     Panel panel;
@@ -83,8 +82,8 @@ public class Window extends JFrame {
         }
         
         // Detta ritar ut allting på riktigt :-)
-        
-        drawScore(score++);
+        Score.increase();
+        drawScore(Score.getScore());
         drawScreen();
         
     }

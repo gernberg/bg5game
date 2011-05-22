@@ -83,7 +83,7 @@ public class Coordinator {
 	private void gameOver() {
 		// game over, game over man.
 		playGameOver();
-		JOptionPane.showMessageDialog(new JFrame(), "You lose, loser...\nKein mehr strobopop für dich!", "ACHTUNG ACHTUNG!",
+		JOptionPane.showMessageDialog(new JFrame(), "You lose, loser...\nKein mehr strobopop für dich!\n\nPoäng: " + Score.getScore(), "ACHTUNG ACHTUNG!",
 			    JOptionPane.WARNING_MESSAGE);
 		playing = false;
 	}
